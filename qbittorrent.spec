@@ -1,11 +1,11 @@
 Name:		qbittorrent
 Version:	2.1.0
-Release:	%mkrel 0.rc4.1
+Release:	%mkrel 0.rc5.1
 Summary:	A lightweight but featureful BitTorrent client
 Group:		Networking/File transfer
 License:	GPLv2+
 Url:		http://qbittorrent.sourceforge.net/
-Source0:	http://downloads.sourceforge.net/qbittorrent/%{name}-%{version}rc4.tar.gz
+Source0:	http://downloads.sourceforge.net/qbittorrent/%{name}-%{version}rc5.tar.gz
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:	qt4-devel >= 4.4
 BuildRequires:	boost-devel
@@ -29,7 +29,7 @@ to use. It is multi-platform and provides a Qt4 graphical interface.
 #-------------------------------------------------------------------------
 
 %prep
-%setup -q -n %{name}-%{version}rc4
+%setup -q -n %{name}-%{version}rc5
 
 %build
 %setup_compile_flags
