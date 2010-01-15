@@ -1,4 +1,4 @@
-%define rel rc6
+%define rel rc7
 
 Name:		qbittorrent
 Version:	2.1.0
