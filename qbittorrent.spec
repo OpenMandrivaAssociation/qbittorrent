@@ -9,7 +9,7 @@ Source0:	%{name}-%{version}.tar.gz
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:	qt4-devel >= 4.4
 BuildRequires:	boost-devel
-BuildRequires:	libtorrent-rasterbar-devel >= 0.14.7
+BuildRequires:	libtorrent-rasterbar-devel >= 0.14.4
 BuildRequires:	libnotify-devel >= 0.4.2
 Requires:	python
 Requires:	geoip
