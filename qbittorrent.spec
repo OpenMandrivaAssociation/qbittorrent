@@ -1,13 +1,11 @@
-%define rel rc7
-
 Name:		qbittorrent
 Version:	2.1.0
-Release:	%mkrel -c %{rel} 2
+Release:	%mkrel 1
 Summary:	A lightweight but featureful BitTorrent client
 Group:		Networking/File transfer
 License:	GPLv2+
 Url:		http://qbittorrent.sourceforge.net/
-Source0:	http://downloads.sourceforge.net/qbittorrent/%{name}-%{version}%{rel}.tar.gz
+Source0:	%{name}-%{version}.tar.gz
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:	qt4-devel >= 4.4
 BuildRequires:	boost-devel
@@ -44,7 +42,7 @@ control the clinet remotely.
 #-------------------------------------------------------------------------
 
 %prep
-%setup -q -n %{name}-%{version}%{rel}
+%setup -q -n %{name}-%{version}
 
 %build
 %setup_compile_flags
