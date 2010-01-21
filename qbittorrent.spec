@@ -1,6 +1,6 @@
 Name:		qbittorrent
 Version:	2.1.1
-Release:	%mkrel 1
+Release:	%mkrel 2
 Summary:	A lightweight but featureful BitTorrent client
 Group:		Networking/File transfer
 License:	GPLv2+
@@ -26,6 +26,52 @@ Group:		Networking/File transfer
 A Headless Bittorrent Client with a feature rich Web UI allowing users to
 control the clinet remotely.
 
+%prep
+%setup -q -n %{name}-%{version}
+
+%build
+%setup_compile_flags
+# headless aka nox
+mkdir build-nox
+cd build-nox
+../configure	--prefix=%{_prefix} \
+		--qtdir=%{qt4dir} \
+		--disable-gui \
+		--disable-libnotify \
+		--disable-geoip-database
+cp conf.pri ..
+%make
+mv -f ../conf.pri ../conf.pri.nox
+
+# GUI
+cd ..
+mkdir build-gui
+cd build-gui
+../configure	--prefix=%{_prefix} \
+		--qtdir=%{qt4dir}
+cp conf.pri ..
+%make
+mv -f ../conf.pri ../conf.pri.gui
+
+
+%install
+rm -rf %{buildroot}
+# install headless part
+mv -f conf.pri.nox conf.pri
+cd build-nox
+make INSTALL_ROOT=%{buildroot} install
+
+# install gui
+cd ..
+mv -f conf.pri.gui conf.pri
+cd build-gui
+make INSTALL_ROOT=%{buildroot} install
+
+#install -m755 src/%{name}-nox %{buildroot}%{_bindir}
+#install -m644 doc/%{name}-nox.1 %{buildroot}%{_mandir}/man1
+
+%clean
+rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root,-)
@@ -39,33 +85,4 @@ control the clinet remotely.
 %defattr(-,root,root,-)
 %{_bindir}/%{name}-nox
 %{_mandir}/man1/%{name}-nox.1*
-#-------------------------------------------------------------------------
 
-%prep
-%setup -q -n %{name}-%{version}
-
-%build
-%setup_compile_flags
-# configure and make the headless part first
-./configure 	--disable-gui \
-		--disable-libnotify \
-		--disable-geoip-database \
-		--prefix=%{_prefix}
-%make
-make clean
-
-# now configure and make the gui part
-./configure --prefix=%{_prefix}
-%make
-
-
-%install
-rm -rf %{buildroot}
-# install the gui files
-make INSTALL_ROOT=%{buildroot} install
-# install healdess files
-install -m755 src/%{name}-nox %{buildroot}%{_bindir}
-install -m644 doc/%{name}-nox.1 %{buildroot}%{_mandir}/man1
-
-%clean
-rm -rf %{buildroot}
