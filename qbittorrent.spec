@@ -1,12 +1,11 @@
 Name:		qbittorrent
-Version:	2.1.1
-Release:	%mkrel 3
+Version:	2.1.2
+Release:	%mkrel 1
 Summary:	A lightweight but featureful BitTorrent client
 Group:		Networking/File transfer
 License:	GPLv2+
 Url:		http://qbittorrent.sourceforge.net/
 Source0:	%{name}-%{version}.tar.gz
-Patch0:		qbittorrent-1.2.1-folder-renaming.patch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:	qt4-devel >= 4.4
 BuildRequires:	boost-devel
@@ -29,7 +28,6 @@ control the clinet remotely.
 
 %prep
 %setup -q -n %{name}-%{version}
-%patch0 -p0 
 
 %build
 %setup_compile_flags
