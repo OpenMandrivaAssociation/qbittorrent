@@ -1,11 +1,16 @@
+%define prerel beta1
+
 Name:		qbittorrent
-Version:	2.1.2
-Release:	%mkrel 1
+Version:	2.2.0
+Release:	%mkrel -c %prerel 1
 Summary:	A lightweight but featureful BitTorrent client
 Group:		Networking/File transfer
 License:	GPLv2+
 Url:		http://qbittorrent.sourceforge.net/
-Source0:	%{name}-%{version}.tar.gz
+Source0:	%{name}-%{version}%{prerel}.tar.gz
+# (fc) qbittorrent-2.2.0beta1 patch to disable extra debug
+Patch0:		qbittorrent-2.2.0beta1-disable-extra-debug.patch
+Patch1:		qbittorrent-2.2.0beta1-preferences.h.patch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:	qt4-devel >= 4.4
 BuildRequires:	boost-devel
@@ -27,7 +32,9 @@ A Headless Bittorrent Client with a feature rich Web UI allowing users to
 control the clinet remotely.
 
 %prep
-%setup -q -n %{name}-%{version}
+%setup -q -n %{name}-%{version}%{prerel}
+%patch0 -p1
+%patch1 -p0
 
 %build
 %setup_compile_flags
