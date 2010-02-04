@@ -2,7 +2,7 @@
 
 Name:		qbittorrent
 Version:	2.2.0
-Release:	%mkrel -c %prerel 2
+Release:	%mkrel -c %prerel 3
 Summary:	A lightweight but featureful BitTorrent client
 Group:		Networking/File transfer
 License:	GPLv2+
