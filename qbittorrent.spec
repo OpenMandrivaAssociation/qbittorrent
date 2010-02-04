@@ -8,7 +8,7 @@ Group:		Networking/File transfer
 License:	GPLv2+
 Url:		http://qbittorrent.sourceforge.net/
 Source0:	%{name}-%{version}%{prerel}.tar.gz
-# (fc) qbittorrent-2.2.0beta1 patch to disable extra debug
+# (ahmad) qbittorrent-2.2.0beta1 patch to disable extra debug
 Patch0:		qbittorrent-2.2.0beta1-disable-extra-debug.patch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:	qt4-devel >= 4.4
