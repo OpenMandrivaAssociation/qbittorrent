@@ -1,8 +1,8 @@
-%define prerel beta1
+%define prerel beta2
 
 Name:		qbittorrent
 Version:	2.2.0
-Release:	%mkrel -c %prerel 3
+Release:	%mkrel -c %prerel 1
 Summary:	A lightweight but featureful BitTorrent client
 Group:		Networking/File transfer
 License:	GPLv2+
@@ -10,7 +10,6 @@ Url:		http://qbittorrent.sourceforge.net/
 Source0:	%{name}-%{version}%{prerel}.tar.gz
 # (fc) qbittorrent-2.2.0beta1 patch to disable extra debug
 Patch0:		qbittorrent-2.2.0beta1-disable-extra-debug.patch
-Patch1:		qbittorrent-2.2.0beta1-preferences.h.patch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:	qt4-devel >= 4.4
 BuildRequires:	boost-devel
@@ -34,7 +33,6 @@ control the clinet remotely.
 %prep
 %setup -q -n %{name}-%{version}%{prerel}
 %patch0 -p1
-%patch1 -p0
 
 %build
 %setup_compile_flags
@@ -74,9 +72,6 @@ mv -f conf.pri.gui conf.pri
 cd build-gui
 make INSTALL_ROOT=%{buildroot} install
 
-#install -m755 src/%{name}-nox %{buildroot}%{_bindir}
-#install -m644 doc/%{name}-nox.1 %{buildroot}%{_mandir}/man1
-
 %clean
 rm -rf %{buildroot}
 
@@ -92,4 +87,3 @@ rm -rf %{buildroot}
 %defattr(-,root,root,-)
 %{_bindir}/%{name}-nox
 %{_mandir}/man1/%{name}-nox.1*
-
