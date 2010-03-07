@@ -1,4 +1,4 @@
-%define prerel beta4
+%define prerel rc1
 
 Name:		qbittorrent
 Version:	2.2.0
