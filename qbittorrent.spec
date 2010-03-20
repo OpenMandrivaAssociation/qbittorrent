@@ -1,5 +1,5 @@
 Name:		qbittorrent
-Version:	2.2.0
+Version:	2.2.1
 Release:	%mkrel 1
 Summary:	A lightweight but featureful BitTorrent client
 Group:		Networking/File transfer
