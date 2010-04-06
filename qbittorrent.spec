@@ -1,6 +1,6 @@
 Name:		qbittorrent
 Version:	2.2.4
-Release:	%mkrel 1
+Release:	%mkrel 2
 Summary:	A lightweight but featureful BitTorrent client
 Group:		Networking/File transfer
 License:	GPLv2+
@@ -8,6 +8,7 @@ Url:		http://qbittorrent.sourceforge.net/
 Source0:	%{name}-%{version}.tar.gz
 # (ahmad) qbittorrent-2.2.0beta1 patch to disable extra debug
 Patch0:		qbittorrent-2.2.0beta1-disable-extra-debug.patch
+Patch1:		new-label-fix.patch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:	qt4-devel >= 4.4
 BuildRequires:	boost-devel
@@ -31,6 +32,7 @@ control the clinet remotely.
 %prep
 %setup -q -n %{name}-%{version}
 #%patch0 -p1
+%patch1 -p0
 
 %build
 %setup_compile_flags
