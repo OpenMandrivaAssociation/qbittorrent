@@ -19,7 +19,7 @@ Requires:	python
 Requires:	geoip
 
 %description
-A lightweight but featureful BitTorrent client that aims to be very easy 
+A lightweight but feature-full BitTorrent client that aims to be very easy 
 to use. It is multi-platform and provides a Qt4 graphical interface.
 
 %package -n %{name}-nox
