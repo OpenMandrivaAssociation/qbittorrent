@@ -1,4 +1,4 @@
-%define prerel rc2
+%define prerel rc4
 
 Name:		qbittorrent
 Version:	2.3.0
