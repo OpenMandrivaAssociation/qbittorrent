@@ -1,13 +1,14 @@
-%define prerel rc10
+#define prerel 0
 
 Name:		qbittorrent
 Version:	2.3.0
-Release:	%mkrel -c %prerel 1
+Release:	%mkrel 1
 Summary:	A lightweight but featureful BitTorrent client
 Group:		Networking/File transfer
 License:	GPLv2+
 Url:		http://qbittorrent.sourceforge.net/
-Source0:	http://downloads.sourceforge.net/project/qbittorrent/qbittorrent-unstable/%{name}-%{version}/%{name}-%{version}%prerel.tar.gz
+Source0:	http//downloads.sourceforge.net/project/qbittorrent/qbittorrent/qbittorrent-2.3.0/qbittorrent-2.3.0.tar.gz
+#Source0:	http://downloads.sourceforge.net/project/qbittorrent/qbittorrent-unstable/%{name}-%{version}/%{name}-%{version}%{prerel}.tar.gz
 # (ahmad) qbittorrent-2.2.0beta1 patch to disable extra debug
 Patch0:		qbittorrent-2.2.0beta1-disable-extra-debug.patch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
@@ -31,7 +32,8 @@ A Headless Bittorrent Client with a feature rich Web UI allowing users to
 control the clinet remotely.
 
 %prep
-%setup -q -n %{name}-%{version}%prerel
+%setup -q -n %{name}-%{version}
+#%setup -q -n %{name}-%{version}%{prerel}
 # (ahmad) patch0 is only enabled when building some prerels, to disable extra debug
 #%patch0 -p1 -b .debug
 
