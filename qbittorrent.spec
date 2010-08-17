@@ -1,13 +1,13 @@
 #define prerel 0
 
 Name:		qbittorrent
-Version:	2.3.0
-Release:	%mkrel 2
+Version:	2.3.1
+Release:	%mkrel 1
 Summary:	A lightweight but featureful BitTorrent client
 Group:		Networking/File transfer
 License:	GPLv2+
 Url:		http://qbittorrent.sourceforge.net/
-Source0:	http//downloads.sourceforge.net/project/qbittorrent/qbittorrent/qbittorrent-2.3.0/qbittorrent-2.3.0.tar.gz
+Source0:	http//downloads.sourceforge.net/project/qbittorrent/qbittorrent/qbittorrent-%{version}/qbittorrent-%{version}.tar.gz
 #Source0:	http://downloads.sourceforge.net/project/qbittorrent/qbittorrent-unstable/%{name}-%{version}/%{name}-%{version}%{prerel}.tar.gz
 # (ahmad) qbittorrent-2.2.0beta1 patch to disable extra debug
 Patch0:		qbittorrent-2.2.0beta1-disable-extra-debug.patch
