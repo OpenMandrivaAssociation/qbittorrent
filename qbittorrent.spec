@@ -1,4 +1,4 @@
-%define version	2.4.7
+%define version	2.4.8
 %define prerel	0
 %define rel	1
 
@@ -20,7 +20,7 @@ Url:		http://qbittorrent.sourceforge.net/
 %if %prerel
 Source0:	http://downloads.sourceforge.net/project/qbittorrent/qbittorrent-unstable/%{name}-%{version}/%{name}-%{version}%{prerel}.tar.gz
 %else
-Source0:	http//downloads.sourceforge.net/project/qbittorrent/qbittorrent/qbittorrent-%{version}/qbittorrent-%{version}.tar.gz
+Source0:	http://downloads.sourceforge.net/project/qbittorrent/qbittorrent/qbittorrent-%{version}/qbittorrent-%{version}.tar.gz
 %endif
 # (ahmad) qbittorrent-2.2.0beta1 patch to disable extra debug
 Patch0:		qbittorrent-2.2.0beta1-disable-extra-debug.patch
