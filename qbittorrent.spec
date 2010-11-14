@@ -1,5 +1,5 @@
 %define version	2.5.0
-%define prerel	beta2
+%define prerel	beta3
 %define rel	1
 
 %if %prerel
@@ -18,7 +18,7 @@ Group:		Networking/File transfer
 License:	GPLv2+
 Url:		http://qbittorrent.sourceforge.net/
 %if %prerel
-Source0:	http://downloads.sourceforge.net/project/qbittorrent/qbittorrent-unstable/%{name}-%{version}/%{name}-%{version}%{prerel}.tar.gz
+Source0:	http://downloads.sourceforge.net/project/qbittorrent/qbittorrent-unstable/%{name}-%{version}%{prerel}.tar.gz
 %else
 Source0:	http://downloads.sourceforge.net/project/qbittorrent/qbittorrent/qbittorrent-%{version}/qbittorrent-%{version}.tar.gz
 %endif
