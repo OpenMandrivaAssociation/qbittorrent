@@ -25,7 +25,7 @@ Source0:	http://downloads.sourceforge.net/project/qbittorrent/qbittorrent/qbitto
 # (ahmad) qbittorrent-2.2.0beta1 patch to disable extra debug
 Patch0:		qbittorrent-2.2.0beta1-disable-extra-debug.patch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
-BuildRequires:	qt4-devel >= 4.4
+BuildRequires:	qt4-devel >= 4:4.4
 BuildRequires:	boost-devel
 BuildRequires:	libtorrent-rasterbar-devel >= 0.14.4
 BuildRequires:	libnotify-devel >= 0.4.2
