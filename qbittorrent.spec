@@ -1,5 +1,5 @@
 %define version	2.5.0
-%define prerel	beta4
+%define prerel	beta7
 %define rel	1
 
 %if %prerel
@@ -24,8 +24,6 @@ Source0:	http://downloads.sourceforge.net/project/qbittorrent/qbittorrent/qbitto
 %endif
 # (ahmad) qbittorrent-2.2.0beta1 patch to disable extra debug
 Patch0:		qbittorrent-2.2.0beta1-disable-extra-debug.patch
-# add upstream patch to fix compilation errors
-Patch1:		qbittorrent-2.5.0beta4-fix-compilation-errors.patch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:	qt4-devel >= 4.4
 BuildRequires:	boost-devel
@@ -51,8 +49,6 @@ control the clinet remotely.
 
 # (ahmad) patch0 is only enabled when building some prerels, to disable extra debug
 #%patch0 -p1 -b .debug
-
-%patch1 -p1 -b .fix-compliation
 
 %build
 %setup_compile_flags
