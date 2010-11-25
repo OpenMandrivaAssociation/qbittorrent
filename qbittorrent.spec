@@ -4,7 +4,7 @@
 
 %if %prerel
 %define srcname %{name}-%{version}%prerel
-%define release %mkrel %prerel.%rel
+%define release %mkrel 0.%prerel.%rel
 %else
 %define srcname %{name}-%{version}
 %define release %mkrel %rel
