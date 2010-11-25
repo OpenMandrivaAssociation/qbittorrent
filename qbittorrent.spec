@@ -1,10 +1,10 @@
 %define version	2.5.0
-%define prerel	rc1
+%define prerel	rc2
 %define rel	1
 
 %if %prerel
 %define srcname %{name}-%{version}%prerel
-%define release %mkrel -c %prerel %rel
+%define release %mkrel %prerel.%rel
 %else
 %define srcname %{name}-%{version}
 %define release %mkrel %rel
@@ -77,13 +77,13 @@ mv -f ../conf.pri ../conf.pri.gui
 %install
 rm -rf %{buildroot}
 # install headless part
-mv -f conf.pri.nox conf.pri
+cp -f conf.pri.nox conf.pri
 cd build-nox
 make INSTALL_ROOT=%{buildroot} install
 
 # install gui
 cd ..
-mv -f conf.pri.gui conf.pri
+cp -f conf.pri.gui conf.pri
 cd build-gui
 make INSTALL_ROOT=%{buildroot} install
 
