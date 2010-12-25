@@ -1,5 +1,5 @@
 %define version	2.6.0
-%define prerel	beta1
+%define prerel	beta2
 %define rel	1
 
 %if %prerel
