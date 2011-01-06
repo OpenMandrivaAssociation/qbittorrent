@@ -1,5 +1,5 @@
 %define version	2.6.0
-%define prerel	beta4
+%define prerel	rc2
 %define rel	1
 
 %if %prerel
@@ -24,8 +24,6 @@ Source0:	http://downloads.sourceforge.net/project/qbittorrent/qbittorrent-unstab
 %else
 Source0:	http://downloads.sourceforge.net/project/qbittorrent/qbittorrent/qbittorrent-%{version}/qbittorrent-%{version}.tar.gz
 %endif
-# (ahmad) qbittorrent-2.2.0beta1 patch to disable extra debug
-Patch0:		qbittorrent-2.2.0beta1-disable-extra-debug.patch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:	qt4-devel >= 4:4.6
 BuildRequires:	boost-devel
@@ -48,9 +46,6 @@ control the clinet remotely.
 
 %prep
 %setup -q -n %{srcname}
-
-# (ahmad) patch0 is only enabled when building some prerels, to disable extra debug
-#%patch0 -p1 -b .debug
 
 %build
 %setup_compile_flags
