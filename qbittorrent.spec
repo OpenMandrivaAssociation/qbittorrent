@@ -1,4 +1,4 @@
-%define version	2.6.5
+%define version	2.6.6
 %define prerel	0
 %define rel	1
 
