@@ -24,6 +24,7 @@ Source0:	http://downloads.sourceforge.net/project/qbittorrent/qbittorrent-unstab
 %else
 Source0:	http://downloads.sourceforge.net/project/qbittorrent/qbittorrent/qbittorrent-%{version}/qbittorrent-%{version}.tar.gz
 %endif
+Patch0:		qbittorrent-2.6.6-force-filesystem-v2.patch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:	qt4-devel >= 4:4.6
 BuildRequires:	boost-devel
@@ -46,6 +47,7 @@ control the clinet remotely.
 
 %prep
 %setup -q -n %{srcname}
+%patch0 -p0 -b .boost
 
 %build
 %setup_compile_flags
