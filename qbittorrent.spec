@@ -1,6 +1,6 @@
 %define version	2.6.6
 %define prerel	0
-%define rel	2
+%define rel	3
 
 %if %prerel
 %define srcname %{name}-%{version}%prerel
