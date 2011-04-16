@@ -1,35 +1,18 @@
-%define version	2.6.6
-%define prerel	0
-%define rel	4
-
-%if %prerel
-%define srcname %{name}-%{version}%prerel
-%define release %mkrel 0.%prerel.%rel
-%else
-%define srcname %{name}-%{version}
-%define release %mkrel %rel
-%endif
-
 %define build_nox 1
 
 Name:		qbittorrent
-Version:	%{version}
-Release:	%{release}
+Version:	2.7.3
+Release:	%mkrel 1
 Summary:	A lightweight but featureful BitTorrent client
 Group:		Networking/File transfer
 License:	GPLv2+
 Url:		http://qbittorrent.sourceforge.net/
-%if %prerel
-Source0:	http://downloads.sourceforge.net/project/qbittorrent/qbittorrent-unstable/%{name}-%{version}%{prerel}.tar.gz
-%else
 Source0:	http://downloads.sourceforge.net/project/qbittorrent/qbittorrent/qbittorrent-%{version}/qbittorrent-%{version}.tar.gz
-%endif
-Patch0:		qbittorrent-2.6.6-force-filesystem-v2.patch
+Patch0:		qbittorrent-2.7.3-force-filesystem-v2.patch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:	qt4-devel >= 4:4.6
 BuildRequires:	boost-devel
 BuildRequires:	libtorrent-rasterbar-devel >= 0.14.4
-BuildRequires:	libnotify-devel >= 0.4.2
 Requires:	python
 Requires:	geoip
 
@@ -46,7 +29,7 @@ A Headless Bittorrent Client with a feature rich Web UI allowing users to
 control the clinet remotely.
 
 %prep
-%setup -q -n %{srcname}
+%setup -q -n %{name}-%{version}
 %patch0 -p0 -b .boost
 
 %build
@@ -58,7 +41,6 @@ pushd build-nox
   ../configure	--prefix=%{_prefix} \
 		--qtdir=%{qt4dir} \
 		--disable-gui \
-		--disable-libnotify \
 		--disable-geoip-database
   cp conf.pri ..
   %make
@@ -102,6 +84,7 @@ rm -rf %{buildroot}
 %{_bindir}/%{name}
 %{_datadir}/applications/qBittorrent.desktop
 %{_iconsdir}/hicolor/*/apps/%{name}.png
+%{_datadir}/pixmaps/qbittorrent.png
 %{_mandir}/man1/%{name}.1*
 
 %if %build_nox
