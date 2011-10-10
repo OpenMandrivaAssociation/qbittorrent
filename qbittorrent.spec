@@ -1,7 +1,7 @@
 %define build_nox 1
 
 Name:		qbittorrent
-Version:	2.8.1
+Version:	2.9.0
 Release:	%mkrel 1
 Summary:	A lightweight but featureful BitTorrent client
 Group:		Networking/File transfer
@@ -12,7 +12,7 @@ Source0:	http://downloads.sourceforge.net/project/qbittorrent/qbittorrent/qbitto
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:	qt4-devel >= 4:4.6
 BuildRequires:	boost-devel
-BuildRequires:	libtorrent-rasterbar-devel >= 0.14.4
+BuildRequires:	libtorrent-rasterbar-devel >= 0.15.8
 Requires:	python
 Requires:	geoip
 
