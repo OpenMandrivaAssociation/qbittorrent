@@ -1,7 +1,7 @@
 %define build_nox 1
 
 Name:		qbittorrent
-Version:	2.9.0
+Version:	2.9.1
 Release:	%mkrel 1
 Summary:	A lightweight but featureful BitTorrent client
 Group:		Networking/File transfer
