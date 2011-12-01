@@ -1,14 +1,13 @@
 %define build_nox 1
 
 Name:		qbittorrent
-Version:	2.9.1
+Version:	2.9.2
 Release:	%mkrel 1
 Summary:	A lightweight but featureful BitTorrent client
 Group:		Networking/File transfer
 License:	GPLv2+
 Url:		http://qbittorrent.sourceforge.net/
 Source0:	http://downloads.sourceforge.net/project/qbittorrent/qbittorrent/qbittorrent-%{version}/qbittorrent-%{version}.tar.gz
-#Patch0:		qbittorrent-2.7.3-force-filesystem-v2.patch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:	qt4-devel >= 4:4.6
 BuildRequires:	boost-devel
