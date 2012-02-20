@@ -1,8 +1,8 @@
 %define build_nox 1
 
 Name:		qbittorrent
-Version:	2.9.3
-Release:	%mkrel 1
+Version:	2.9.5
+Release:	1
 Summary:	A lightweight but featureful BitTorrent client
 Group:		Networking/File transfer
 License:	GPLv2+
@@ -72,11 +72,7 @@ pushd build-gui
   make INSTALL_ROOT=%{buildroot} install
 popd
 
-%clean
-%__rm -rf %{buildroot}
-
 %files
-%defattr(-,root,root,-)
 %doc AUTHORS Changelog COPYING NEWS README TODO
 %{_bindir}/%{name}
 %{_datadir}/applications/qBittorrent.desktop
@@ -86,7 +82,6 @@ popd
 
 %if %{build_nox}
 %files -n  %{name}-nox
-%defattr(-,root,root,-)
 %{_bindir}/%{name}-nox
 %{_mandir}/man1/%{name}-nox.1*
 %endif
