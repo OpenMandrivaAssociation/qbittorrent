@@ -1,0 +1,57 @@
+diff -urN qbittorrent-3.0.6/src/about_imp.h qbittorrent-3.0.6-patched/src/about_imp.h
+--- qbittorrent-3.0.6/src/about_imp.h	2012-10-08 01:42:29.000000000 +1100
++++ qbittorrent-3.0.6-patched/src/about_imp.h	2012-10-13 19:26:21.039551768 +1100
+@@ -51,7 +51,7 @@
+       // Set icons
+       logo->setPixmap(QPixmap(QString::fromUtf8(":/Icons/skin/qbittorrent22.png")));
+       //Title
+-      lb_name->setText(QString::fromUtf8("<b><h1>")+tr("qBittorrent")+QString::fromUtf8(" "VERSION"</h1></b>"));
++      lb_name->setText(QString::fromUtf8("<b><h1>")+tr("qBittorrent")+QString::fromUtf8(" " VERSION "</h1></b>"));
+       // Thanks
+       QString thanks_txt;
+       thanks_txt += QString::fromUtf8("<p>I would first like to thank sourceforge.net for hosting qBittorrent project and for their support.</p>");
+diff -urN qbittorrent-3.0.6/src/dnsupdater.cpp qbittorrent-3.0.6-patched/src/dnsupdater.cpp
+--- qbittorrent-3.0.6/src/dnsupdater.cpp	2012-10-08 01:42:29.000000000 +1100
++++ qbittorrent-3.0.6-patched/src/dnsupdater.cpp	2012-10-13 19:25:58.017550002 +1100
+@@ -72,7 +72,7 @@
+   m_lastIPCheckTime = QDateTime::currentDateTime();
+   QNetworkRequest request;
+   request.setUrl(QUrl("http://checkip.dyndns.org"));
+-  request.setRawHeader("User-Agent", "qBittorrent/"VERSION" chris@qbittorrent.org");
++  request.setRawHeader("User-Agent", "qBittorrent/" VERSION " chris@qbittorrent.org");
+   manager->get(request);
+ }
+ 
+@@ -119,7 +119,7 @@
+   m_lastIPCheckTime = QDateTime::currentDateTime();
+   QNetworkRequest request;
+   request.setUrl(getUpdateUrl());
+-  request.setRawHeader("User-Agent", "qBittorrent/"VERSION" chris@qbittorrent.org");
++  request.setRawHeader("User-Agent", "qBittorrent/" VERSION " chris@qbittorrent.org");
+   manager->get(request);
+ }
+ 
+diff -urN qbittorrent-3.0.6/src/qtlibtorrent/qbtsession.cpp qbittorrent-3.0.6-patched/src/qtlibtorrent/qbtsession.cpp
+--- qbittorrent-3.0.6/src/qtlibtorrent/qbtsession.cpp	2012-10-08 01:42:29.000000000 +1100
++++ qbittorrent-3.0.6-patched/src/qtlibtorrent/qbtsession.cpp	2012-10-13 19:24:28.187543109 +1100
+@@ -381,7 +381,7 @@
+   }
+   // * Session settings
+   session_settings sessionSettings = s->settings();
+-  sessionSettings.user_agent = "qBittorrent "VERSION;
++  sessionSettings.user_agent = "qBittorrent " VERSION;
+   //std::cout << "HTTP user agent is " << sessionSettings.user_agent << std::endl;
+   addConsoleMessage(tr("HTTP user agent is %1").arg(misc::toQString(sessionSettings.user_agent)));
+ 
+diff -urN qbittorrent-3.0.6/src/torrentcreator/torrentcreatorthread.cpp qbittorrent-3.0.6-patched/src/torrentcreator/torrentcreatorthread.cpp
+--- qbittorrent-3.0.6/src/torrentcreator/torrentcreatorthread.cpp	2012-10-08 01:42:29.000000000 +1100
++++ qbittorrent-3.0.6-patched/src/torrentcreator/torrentcreatorthread.cpp	2012-10-13 19:26:42.613553772 +1100
+@@ -101,7 +101,7 @@
+ 
+ void TorrentCreatorThread::run() {
+   emit updateProgress(0);
+-  QString creator_str("qBittorrent "VERSION);
++  QString creator_str("qBittorrent " VERSION);
+   try {
+     file_storage fs;
+     // Adding files to the torrent

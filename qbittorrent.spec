@@ -1,16 +1,17 @@
 %define build_nox 1
 
 Name:		qbittorrent
-Version:	2.9.5
-Release:	1
+Version:	3.0.6
+Release:	2
 Summary:	A lightweight but featureful BitTorrent client
 Group:		Networking/File transfer
 License:	GPLv2+
 Url:		http://qbittorrent.sourceforge.net/
-Source0:	http://downloads.sourceforge.net/project/qbittorrent/qbittorrent/qbittorrent-%{version}/qbittorrent-%{version}.tar.gz
-BuildRequires:	qt4-devel >= 4:4.6
+Source0:	http://downloads.sourceforge.net/project/qbittorrent/qbittorrent/qbittorrent-%{version}/qbittorrent-%{version}.tar.xz
+Patch0:		qbittorrent-3.0.6-gnu++0x.patch
+BuildRequires:	qt4-devel
 BuildRequires:	boost-devel
-BuildRequires:	libtorrent-rasterbar-devel >= 0.15.8
+BuildRequires:	pkgconfig(libtorrent-rasterbar)
 Requires:	python
 Requires:	geoip
 
@@ -27,7 +28,8 @@ A Headless Bittorrent Client with a feature rich Web UI allowing users to
 control the clinet remotely.
 
 %prep
-%setup -q -n %{name}-%{version}
+%setup -q
+%patch0 -p1
 
 %build
 %setup_compile_flags
@@ -56,8 +58,6 @@ pushd build-gui
 popd
 
 %install
-%__rm -rf %{buildroot}
-
 # install headless part
 %if %build_nox
 %__cp -f conf.pri.nox conf.pri
@@ -85,3 +85,4 @@ popd
 %{_bindir}/%{name}-nox
 %{_mandir}/man1/%{name}-nox.1*
 %endif
+
