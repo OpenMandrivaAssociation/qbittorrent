@@ -1,8 +1,8 @@
 %define build_nox 1
 
 Name:		qbittorrent
-Version:	3.0.6
-Release:	2
+Version:	3.0.8
+Release:	1
 Summary:	A lightweight but featureful BitTorrent client
 Group:		Networking/File transfer
 License:	GPLv2+
