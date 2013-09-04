@@ -1,7 +1,8 @@
-%define build_nox 1
+%define debug_package	%nil
+%bcond_without	nox
 
 Name:		qbittorrent
-Version:	3.0.8
+Version:	3.0.11
 Release:	1
 Summary:	A lightweight but featureful BitTorrent client
 Group:		Networking/File transfer
@@ -12,6 +13,7 @@ Patch0:		qbittorrent-3.0.6-gnu++0x.patch
 BuildRequires:	qt4-devel
 BuildRequires:	boost-devel
 BuildRequires:	pkgconfig(libtorrent-rasterbar)
+BuildRequires:	qtsingleapplication-devel
 Requires:	python
 Requires:	geoip
 
@@ -29,12 +31,16 @@ control the clinet remotely.
 
 %prep
 %setup -q
-%patch0 -p1
+%apply_patches
 
 %build
+chmod -x AUTHORS Changelog COPYING NEWS README TODO
+# respect ldflags
+sed -i -e 's/-Wl,--as-needed/%{ldflags}/g' src/src.pro
 %setup_compile_flags
 # headless aka nox
-%if %{build_nox}
+
+%if %{with nox}
 %__mkdir build-nox
 pushd build-nox
   ../configure	--prefix=%{_prefix} \
@@ -51,7 +57,8 @@ popd
 %__mkdir build-gui
 pushd build-gui
   ../configure	--prefix=%{_prefix} \
-		--qtdir=%{qt4dir}
+		--qtdir=%{qt4dir} \
+		--with-qtsingleapplication=system
   %__cp conf.pri ..
   %make
   %__mv -f ../conf.pri ../conf.pri.gui
@@ -59,7 +66,7 @@ popd
 
 %install
 # install headless part
-%if %build_nox
+%if %with nox
 %__cp -f conf.pri.nox conf.pri
 pushd build-nox
   make INSTALL_ROOT=%{buildroot} install
@@ -72,6 +79,7 @@ pushd build-gui
   make INSTALL_ROOT=%{buildroot} install
 popd
 
+
 %files
 %doc AUTHORS Changelog COPYING NEWS README TODO
 %{_bindir}/%{name}
@@ -80,9 +88,8 @@ popd
 %{_datadir}/pixmaps/qbittorrent.png
 %{_mandir}/man1/%{name}.1*
 
-%if %{build_nox}
+%if %{with nox}
 %files -n  %{name}-nox
 %{_bindir}/%{name}-nox
 %{_mandir}/man1/%{name}-nox.1*
 %endif
-
