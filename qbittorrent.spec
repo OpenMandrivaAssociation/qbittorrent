@@ -8,7 +8,7 @@ Summary:	A lightweight but featureful BitTorrent client
 Group:		Networking/File transfer
 License:	GPLv2+
 Url:		http://qbittorrent.sourceforge.net/
-Source0:	http://downloads.sourceforge.net/project/qbittorrent/qbittorrent/qbittorrent-%{version}/qbittorrent-%{version}.tar.xz
+Source0:	http://downloads.sourceforge.net/project/qbittorrent/files/qbittorrent/qbittorrent-%{version}/qbittorrent-%{version}.tar.xz
 Patch0:		qbittorrent-3.0.6-gnu++0x.patch
 BuildRequires:	qt4-devel
 BuildRequires:	boost-devel
