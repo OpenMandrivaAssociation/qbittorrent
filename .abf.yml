@@ -1,5 +1,5 @@
 removed_sources:
-  qbittorrent-3.0.11.tar.xz: fc333e2cd6edd6f998903b891c64d95a266d196d
   qbittorrent-3.0.8.tar.xz: ffe0530ab692f76b5bc96c0581f640a8b9a5e053
+  qbittorrent-3.0.9.tar.xz: af4ec9b357693dea9ce4c59418f2a104cd7912cd
 sources:
-  qbittorrent-3.1.1.tar.gz: 6d558d7d47cf081c34c6a9b5b8acfd43e290062b
+  qbittorrent-3.1.2.tar.xz: 89102686a1f3b4e55e3802f5c7a1e8dcc9cff1bd

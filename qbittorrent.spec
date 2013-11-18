@@ -1,19 +1,18 @@
-%define debug_package	%nil
-%bcond_without	nox
-
+%define build_nox 1
+#debuginfo-without-sources
+%define debug_package	%{nil}
 Name:		qbittorrent
-Version:	3.1.1
+Version:	3.1.2
 Release:	1
 Summary:	A lightweight but featureful BitTorrent client
 Group:		Networking/File transfer
 License:	GPLv2+
 Url:		http://qbittorrent.sourceforge.net/
-Source0:	http://downloads.sourceforge.net/project/qbittorrent/files/qbittorrent/qbittorrent-%{version}/qbittorrent-%{version}.tar.gz
-Patch0:		qbittorrent-3.0.6-gnu++0x.patch
+Source0:	http://downloads.sourceforge.net/project/qbittorrent/qbittorrent/qbittorrent-%{version}/qbittorrent-%{version}.tar.xz
+Patch0:		qbittorrent-3.1.2-gnu++0x.patch
 BuildRequires:	qt4-devel
 BuildRequires:	boost-devel
 BuildRequires:	pkgconfig(libtorrent-rasterbar)
-BuildRequires:	qtsingleapplication-devel
 Requires:	python
 Requires:	geoip
 
@@ -31,16 +30,12 @@ control the clinet remotely.
 
 %prep
 %setup -q
-%apply_patches
+%patch0 -p1
 
 %build
-chmod -x AUTHORS Changelog COPYING NEWS README TODO
-# respect ldflags
-sed -i -e 's/-Wl,--as-needed/%{ldflags}/g' src/src.pro
 %setup_compile_flags
 # headless aka nox
-
-%if %{with nox}
+%if %{build_nox}
 %__mkdir build-nox
 pushd build-nox
   ../configure	--prefix=%{_prefix} \
@@ -57,8 +52,7 @@ popd
 %__mkdir build-gui
 pushd build-gui
   ../configure	--prefix=%{_prefix} \
-		--qtdir=%{qt4dir} \
-		--with-qtsingleapplication=system
+		--qtdir=%{qt4dir}
   %__cp conf.pri ..
   %make
   %__mv -f ../conf.pri ../conf.pri.gui
@@ -66,7 +60,7 @@ popd
 
 %install
 # install headless part
-%if %with nox
+%if %build_nox
 %__cp -f conf.pri.nox conf.pri
 pushd build-nox
   make INSTALL_ROOT=%{buildroot} install
@@ -79,7 +73,6 @@ pushd build-gui
   make INSTALL_ROOT=%{buildroot} install
 popd
 
-
 %files
 %doc AUTHORS Changelog COPYING NEWS README TODO
 %{_bindir}/%{name}
@@ -88,8 +81,9 @@ popd
 %{_datadir}/pixmaps/qbittorrent.png
 %{_mandir}/man1/%{name}.1*
 
-%if %{with nox}
+%if %{build_nox}
 %files -n  %{name}-nox
 %{_bindir}/%{name}-nox
 %{_mandir}/man1/%{name}-nox.1*
 %endif
+
