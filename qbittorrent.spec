@@ -3,7 +3,7 @@
 %define debug_package	%{nil}
 Name:		qbittorrent
 Version:	3.1.2
-Release:	2
+Release:	3
 Summary:	A lightweight but featureful BitTorrent client
 Group:		Networking/File transfer
 License:	GPLv2+
