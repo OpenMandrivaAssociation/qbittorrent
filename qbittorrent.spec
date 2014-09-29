@@ -1,14 +1,19 @@
 %define build_nox 1
 #debuginfo-without-sources
 %define debug_package	%{nil}
+%define gitdate 20140925
 Name:		qbittorrent
-Version:	3.1.9
-Release:	3
+Version:	3.2.0
+Release:	0.%{gitdate}.1
 Summary:	A lightweight but featureful BitTorrent client
 Group:		Networking/File transfer
 License:	GPLv2+
 Url:		http://qbittorrent.sourceforge.net/
+%if "%gitdate" != ""
+Source0:	qbittorrent-%{gitdate}.tar.gz
+%else
 Source0:	http://downloads.sourceforge.net/project/qbittorrent/qbittorrent/qbittorrent-%{version}/qbittorrent-%{version}.tar.xz
+%endif
 Patch0:		qbittorrent-3.1.2-gnu++0x.patch
 BuildRequires:	qt4-devel
 BuildRequires:	boost-devel
@@ -29,7 +34,11 @@ A Headless Bittorrent Client with a feature rich Web UI allowing users to
 control the clinet remotely.
 
 %prep
+%if "%gitdate" != ""
+%setup -q -n %{name}-%{gitdate}
+%else
 %setup -q
+%endif
 %patch0 -p1
 
 %build
@@ -39,7 +48,6 @@ control the clinet remotely.
 %__mkdir build-nox
 pushd build-nox
   ../configure	--prefix=%{_prefix} \
-		--qtdir=%{qt4dir} \
 		--disable-gui \
 		--disable-geoip-database
   %__cp conf.pri ..
@@ -49,32 +57,33 @@ popd
 %endif
 
 # GUI
-%__mkdir build-gui
+mkdir build-gui
 pushd build-gui
-  ../configure	--prefix=%{_prefix} \
-		--qtdir=%{qt4dir}
-  %__cp conf.pri ..
-  %make
-  %__mv -f ../conf.pri ../conf.pri.gui
+  ../configure	--prefix=%{_prefix} 
+  # cb - seems needed
+  echo 'DEFINES += LIBTORRENT_VERSION_NUM=10000' >> conf.pri
+  cp conf.pri ..
+  %make 
+  mv -f ../conf.pri ../conf.pri.gui
 popd
 
 %install
 # install headless part
 %if %build_nox
-%__cp -f conf.pri.nox conf.pri
+cp -f conf.pri.nox conf.pri
 pushd build-nox
   make INSTALL_ROOT=%{buildroot} install
 popd
 %endif
 
 # install gui
-%__cp -f conf.pri.gui conf.pri
+cp -f conf.pri.gui conf.pri
 pushd build-gui
   make INSTALL_ROOT=%{buildroot} install
 popd
 
 %files
-%doc AUTHORS Changelog COPYING NEWS README TODO
+%doc AUTHORS Changelog COPYING NEWS TODO
 %{_bindir}/%{name}
 %{_datadir}/applications/qBittorrent.desktop
 %{_iconsdir}/hicolor/*/apps/%{name}.png
