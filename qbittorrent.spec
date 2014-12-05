@@ -4,7 +4,7 @@
 %define gitdate 20140925
 Name:		qbittorrent
 Version:	3.2.0
-Release:	0.%{gitdate}.1
+Release:	0.%{gitdate}.2
 Summary:	A lightweight but featureful BitTorrent client
 Group:		Networking/File transfer
 License:	GPLv2+
