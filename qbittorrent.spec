@@ -1,21 +1,24 @@
-%define build_nox 1
+%bcond_without nox
 #debuginfo-without-sources
 %define debug_package	%{nil}
-%define gitdate 20140925
+%define gitdate %{nil}
 Name:		qbittorrent
 Version:	3.2.0
-Release:	0.%{gitdate}.2
 Summary:	A lightweight but featureful BitTorrent client
 Group:		Networking/File transfer
 License:	GPLv2+
 Url:		http://qbittorrent.sourceforge.net/
 %if "%gitdate" != ""
 Source0:	qbittorrent-%{gitdate}.tar.gz
+Release:	0.%{gitdate}.1
 %else
 Source0:	http://downloads.sourceforge.net/project/qbittorrent/qbittorrent/qbittorrent-%{version}/qbittorrent-%{version}.tar.xz
+Release:	1
 %endif
-Patch0:		qbittorrent-3.1.2-gnu++0x.patch
-BuildRequires:	qt4-devel
+Patch0:		qbittorrent-3.2.0-compile.patch
+BuildRequires:	qt5-devel
+BuildRequires:	qt5-linguist-tools
+BuildRequires:	qtchooser
 BuildRequires:	boost-devel
 BuildRequires:	pkgconfig(libtorrent-rasterbar)
 Requires:	python
@@ -43,13 +46,17 @@ control the clinet remotely.
 
 %build
 %setup_compile_flags
+
+sed -i -e 's,@QBT_CONF_EXTRA_CFLAGS@,@QBT_CONF_EXTRA_CFLAGS@ -std=gnu++1y,' conf.pri.in
+
 # headless aka nox
-%if %{build_nox}
+%if %{with nox}
 %__mkdir build-nox
 pushd build-nox
   ../configure	--prefix=%{_prefix} \
 		--disable-gui \
-		--disable-geoip-database
+		--disable-geoip-database \
+		--with-qt5
   %__cp conf.pri ..
   %make
   %__mv -f ../conf.pri ../conf.pri.nox
@@ -59,9 +66,7 @@ popd
 # GUI
 mkdir build-gui
 pushd build-gui
-  ../configure	--prefix=%{_prefix} 
-  # cb - seems needed
-  echo 'DEFINES += LIBTORRENT_VERSION_NUM=10000' >> conf.pri
+  ../configure	--prefix=%{_prefix} --with-qt5
   cp conf.pri ..
   %make 
   mv -f ../conf.pri ../conf.pri.gui
@@ -69,7 +74,7 @@ popd
 
 %install
 # install headless part
-%if %build_nox
+%if %{with nox}
 cp -f conf.pri.nox conf.pri
 pushd build-nox
   make INSTALL_ROOT=%{buildroot} install
@@ -88,9 +93,10 @@ popd
 %{_datadir}/applications/qBittorrent.desktop
 %{_iconsdir}/hicolor/*/apps/%{name}.png
 %{_datadir}/pixmaps/qbittorrent.png
+%{_datadir}/appdata/qBittorrent.appdata.xml
 %{_mandir}/man1/%{name}.1*
 
-%if %{build_nox}
+%if %{with nox}
 %files -n  %{name}-nox
 %{_bindir}/%{name}-nox
 %{_mandir}/man1/%{name}-nox.1*
