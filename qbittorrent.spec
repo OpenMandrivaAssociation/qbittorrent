@@ -13,7 +13,7 @@ Source0:	qbittorrent-%{gitdate}.tar.gz
 Release:	0.%{gitdate}.1
 %else
 Source0:	http://downloads.sourceforge.net/project/qbittorrent/qbittorrent/qbittorrent-%{version}/qbittorrent-%{version}.tar.xz
-Release:	2
+Release:	3
 %endif
 Patch0:		qbittorrent-3.2.0-compile.patch
 BuildRequires:	qt5-devel
