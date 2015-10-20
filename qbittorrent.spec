@@ -3,7 +3,7 @@
 %define debug_package	%{nil}
 %define gitdate %{nil}
 Name:		qbittorrent
-Version:	3.2.0
+Version:	3.2.4
 Summary:	A lightweight but featureful BitTorrent client
 Group:		Networking/File transfer
 License:	GPLv2+
@@ -15,7 +15,7 @@ Release:	0.%{gitdate}.1
 Source0:	http://downloads.sourceforge.net/project/qbittorrent/qbittorrent/qbittorrent-%{version}/qbittorrent-%{version}.tar.xz
 Release:	3
 %endif
-Patch0:		qbittorrent-3.2.0-compile.patch
+Patch1:		qbittorrent-3.2.4-compile.patch
 BuildRequires:	qt5-devel
 BuildRequires:	qt5-linguist-tools
 BuildRequires:	qtchooser
@@ -42,7 +42,7 @@ control the clinet remotely.
 %else
 %setup -q
 %endif
-%patch0 -p1
+%apply_patches
 
 %build
 %setup_compile_flags
@@ -55,9 +55,9 @@ sed -i -e 's,@QBT_CONF_EXTRA_CFLAGS@,@QBT_CONF_EXTRA_CFLAGS@ -std=gnu++1y,' conf
 pushd build-nox
   ../configure	--prefix=%{_prefix} \
 		--disable-gui \
-		--disable-geoip-database \
 		--with-qt5
   %__cp conf.pri ..
+  sed -i -e 's/-fno-exceptions//' src/Makefile
   %make
   %__mv -f ../conf.pri ../conf.pri.nox
 popd
@@ -68,6 +68,7 @@ mkdir build-gui
 pushd build-gui
   ../configure	--prefix=%{_prefix} --with-qt5
   cp conf.pri ..
+  sed -i -e 's/-fno-exceptions//' src/Makefile
   %make 
   mv -f ../conf.pri ../conf.pri.gui
 popd
@@ -101,4 +102,3 @@ popd
 %{_bindir}/%{name}-nox
 %{_mandir}/man1/%{name}-nox.1*
 %endif
-
