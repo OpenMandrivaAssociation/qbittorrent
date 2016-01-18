@@ -1,4 +1,2 @@
-removed_sources:
-  qbittorrent-3.2.0.tar.xz: bc865ab356a799056813dcbd9b51b9ad1c3aacbe
 sources:
-  qbittorrent-3.2.4.tar.xz: 4a0f54015fe57cb1c58495a694da026be658f5ae
+  qbittorrent-3.3.1.tar.xz: 26b58eed912f43d611079d2160a3fcbe68842038
