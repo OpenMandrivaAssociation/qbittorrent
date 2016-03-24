@@ -3,7 +3,7 @@
 %define debug_package	%{nil}
 %define gitdate %{nil}
 Name:		qbittorrent
-Version:	3.3.1
+Version:	3.3.3
 Summary:	A lightweight but featureful BitTorrent client
 Group:		Networking/File transfer
 License:	GPLv2+
@@ -13,7 +13,7 @@ Source0:	qbittorrent-%{gitdate}.tar.gz
 Release:	0.%{gitdate}.1
 %else
 Source0:	http://downloads.sourceforge.net/project/qbittorrent/qbittorrent/qbittorrent-%{version}/qbittorrent-%{version}.tar.xz
-Release:	3
+Release:	1
 %endif
 BuildRequires:	qt5-devel
 BuildRequires:	qt5-linguist-tools
