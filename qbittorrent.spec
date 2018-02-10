@@ -26,7 +26,7 @@ BuildRequires:	pkgconfig(Qt5Svg)
 BuildRequires:	pkgconfig(Qt5Network)
 BuildRequires:	pkgconfig(Qt5Widgets)
 BuildRequires:	pkgconfig(Qt5Xml)
-BuildRequires:	qtchooser
+#BuildRequires:	qtchooser
 BuildRequires:	boost-devel
 Requires:	python
 Requires:	geoip
