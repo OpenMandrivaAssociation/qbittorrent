@@ -16,10 +16,18 @@ Source0:	http://downloads.sourceforge.net/project/qbittorrent/qbittorrent/qbitto
 Release:	1
 %endif
 BuildRequires:	qt5-devel
-BuildRequires:	qt5-linguist-tools >= 5.8.0
-BuildRequires:	qtchooser >= 5.8.0
+BuildRequires:	qt5-linguist-tools
+BuildRequires:	pkgconfig(libtorrent-rasterbar)
+BuildRequires:	pkgconfig(Qt5Concurrent)
+BuildRequires:	pkgconfig(Qt5Core)
+BuildRequires:	pkgconfig(Qt5DBus)
+BuildRequires:	pkgconfig(Qt5Gui)
+BuildRequires:	pkgconfig(Qt5Svg)
+BuildRequires:	pkgconfig(Qt5Network)
+BuildRequires:	pkgconfig(Qt5Widgets)
+BuildRequires:	pkgconfig(Qt5Xml)
+BuildRequires:	qtchooser
 BuildRequires:	boost-devel
-BuildRequires:	pkgconfig(libtorrent-rasterbar) >= 1.1.1
 Requires:	python
 Requires:	geoip
 
