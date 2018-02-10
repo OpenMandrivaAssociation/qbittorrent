@@ -19,7 +19,7 @@ BuildRequires:	qt5-devel
 BuildRequires:	qt5-linguist-tools >= 5.8.0
 BuildRequires:	qtchooser >= 5.8.0
 BuildRequires:	boost-devel
-BuildRequires:	pkgconfig(libtorrent-rasterbar)
+BuildRequires:	pkgconfig(libtorrent-rasterbar >= 1.1.1)
 Requires:	python
 Requires:	geoip
 
