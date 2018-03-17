@@ -16,6 +16,7 @@ Source0:	http://downloads.sourceforge.net/project/qbittorrent/qbittorrent/qbitto
 Release:	1
 %endif
 BuildRequires:	boost-devel
+BuildRequires:	qmake5
 BuildRequires:	qt5-linguist-tools
 BuildRequires:	pkgconfig(libtorrent-rasterbar)
 BuildRequires:	pkgconfig(Qt5Concurrent)
