@@ -12,22 +12,23 @@ Url:		http://qbittorrent.sourceforge.net/
 Source0:	qbittorrent-%{gitdate}.tar.gz
 Release:	0.%{gitdate}.1
 %else
-Source0:	http://downloads.sourceforge.net/project/qbittorrent/qbittorrent/qbittorrent-%{version}/qbittorrent-%{version}.tar.xz
+Source0:	http://downloads.sourceforge.net/project/qbittorrent/qbittorrent/qbittorrent-%{version}/qbittorrent-%{version}.tar.gz
 Release:	1
 %endif
-BuildRequires:	qt5-devel
+BuildRequires:	boost-devel
 BuildRequires:	qt5-linguist-tools
 BuildRequires:	pkgconfig(libtorrent-rasterbar)
 BuildRequires:	pkgconfig(Qt5Concurrent)
 BuildRequires:	pkgconfig(Qt5Core)
 BuildRequires:	pkgconfig(Qt5DBus)
 BuildRequires:	pkgconfig(Qt5Gui)
-BuildRequires:	pkgconfig(Qt5Svg) >= 5.8.0
+BuildRequires:	pkgconfig(Qt5Svg)
 BuildRequires:	pkgconfig(Qt5Network)
 BuildRequires:	pkgconfig(Qt5Widgets)
 BuildRequires:	pkgconfig(Qt5Xml)
+BuildRequires:	pkgconfig(gl)
+BuildRequires:	pkgconfig(zlib)
 #BuildRequires:	qtchooser
-BuildRequires:	boost-devel
 Requires:	python
 Requires:	geoip
 
