@@ -100,10 +100,12 @@ popd
 %files
 %doc AUTHORS Changelog COPYING NEWS TODO
 %{_bindir}/%{name}
-%{_datadir}/applications/qBittorrent.desktop
+%{_datadir}/applications/%{name}.desktop
+%{_iconsdir}/hicolor/*/status/%{name}-tray.png
+%{_iconsdir}/hicolor/*/status/%{name}-tray*.svg
 %{_iconsdir}/hicolor/*/apps/%{name}.png
 %{_datadir}/pixmaps/qbittorrent.png
-%{_datadir}/appdata/qBittorrent.appdata.xml
+%{_datadir}/appdata/%{name}.appdata.xml
 %{_mandir}/man1/%{name}.1*
 
 %if %{with nox}
