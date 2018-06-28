@@ -29,6 +29,7 @@ BuildRequires:	pkgconfig(Qt5Widgets)
 BuildRequires:	pkgconfig(Qt5Xml)
 BuildRequires:	pkgconfig(gl)
 BuildRequires:	pkgconfig(zlib)
+BuildRequires:	pkgconfig(openssl)
 #BuildRequires:	qtchooser
 Requires:	python
 Requires:	geoip
