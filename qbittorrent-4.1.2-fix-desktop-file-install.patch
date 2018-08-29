@@ -1,0 +1,12 @@
+diff -Nru a/unixconf.pri b/unixconf.pri
+--- a/unixconf.pri	2018-08-12 20:23:29.000000000 +0200
++++ b/unixconf.pri	2018-08-15 08:01:56.906293884 +0200
+@@ -36,7 +36,7 @@
+ 
+ # Menu Icon
+ !nogui {
+-    menuicon.files = dist/unix/qbittorrent.desktop
++    menuicon.files = $$DIST_PATH/qbittorrent.desktop
+     menuicon.path = $$DATADIR/applications/
+     INSTALLS += menuicon
+ 
