@@ -14,6 +14,7 @@ Release:	0.%{gitdate}.1
 %else
 Source0:	http://downloads.sourceforge.net/project/qbittorrent/qbittorrent/qbittorrent-%{version}/qbittorrent-%{version}.tar.gz
 Release:	1
+Patch0:		qbittorrent-4.1.2-fix-desktop-file-install.patch
 %endif
 BuildRequires:	boost-devel
 BuildRequires:	qmake5
