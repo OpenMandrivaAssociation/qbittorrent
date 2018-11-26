@@ -13,6 +13,8 @@ Source0:	qbittorrent-%{gitdate}.tar.gz
 Release:	0.%{gitdate}.1
 %else
 Source0:	http://downloads.sourceforge.net/project/qbittorrent/qbittorrent/qbittorrent-%{version}/qbittorrent-%{version}.tar.gz
+# Patch for fix build issue introduced in qbittorrent 4.1.4 on non x64bit arch like armv7 or i686. (penguin)
+# /src/base/utils/fs.cpp:346:10: error: case value evaluates to 4283649346, which cannot be narrowed to type '__fsword_t' (aka 'int') [-Wc++11-narrowing]
 Patch0:		qbittorrent-x86-build-fix.patch
 Release:	3
 %endif
