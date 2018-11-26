@@ -13,7 +13,8 @@ Source0:	qbittorrent-%{gitdate}.tar.gz
 Release:	0.%{gitdate}.1
 %else
 Source0:	http://downloads.sourceforge.net/project/qbittorrent/qbittorrent/qbittorrent-%{version}/qbittorrent-%{version}.tar.gz
-Release:	2
+Patch0:		qbittorrent-x86-build-fix.patch
+Release:	3
 %endif
 BuildRequires:	boost-devel
 BuildRequires:	qmake5
@@ -52,7 +53,7 @@ control the clinet remotely.
 %else
 %setup -q
 %endif
-%apply_patches
+%patch0 -p0
 
 %build
 %setup_compile_flags
