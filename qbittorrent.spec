@@ -3,7 +3,7 @@
 %define debug_package	%{nil}
 %define gitdate %{nil}
 Name:		qbittorrent
-Version:	4.1.4
+Version:	4.1.5
 Summary:	A lightweight but featureful BitTorrent client
 Group:		Networking/File transfer
 License:	GPLv2+
@@ -16,7 +16,7 @@ Source0:	http://downloads.sourceforge.net/project/qbittorrent/qbittorrent/qbitto
 # Patch for fix build issue introduced in qbittorrent 4.1.4 on non x64bit arch like armv7 or i686. (penguin)
 # /src/base/utils/fs.cpp:346:10: error: case value evaluates to 4283649346, which cannot be narrowed to type '__fsword_t' (aka 'int') [-Wc++11-narrowing]
 Patch0:		qbittorrent-x86-build-fix.patch
-Release:	3
+Release:	1
 %endif
 BuildRequires:	boost-devel
 BuildRequires:	qmake5
