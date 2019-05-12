@@ -58,6 +58,10 @@ control the clinet remotely.
 %patch0 -p0
 
 %build
+%ifarch %{armx}
+export CC=gcc
+export CXX=g++
+%endif
 %setup_compile_flags
 
 sed -i -e 's,@QBT_CONF_EXTRA_CFLAGS@,@QBT_CONF_EXTRA_CFLAGS@ -std=gnu++1y,' conf.pri.in
@@ -104,12 +108,12 @@ popd
 %files
 %doc AUTHORS Changelog COPYING NEWS TODO
 %{_bindir}/%{name}
-%{_datadir}/applications/%{name}.desktop
+%{_datadir}/applications/org.%{name}.qBittorrent.desktop
 %{_iconsdir}/hicolor/*/status/%{name}-tray.png
 %{_iconsdir}/hicolor/*/status/%{name}-tray*.svg
 %{_iconsdir}/hicolor/*/apps/%{name}.png
 %{_datadir}/pixmaps/qbittorrent.png
-%{_datadir}/appdata/%{name}.appdata.xml
+%{_datadir}/metainfo/org.%{name}.qBittorrent.appdata.xml
 %{_mandir}/man1/%{name}.1*
 
 %if %{with nox}
