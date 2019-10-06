@@ -11,12 +11,8 @@ Url:		http://qbittorrent.sourceforge.net/
 %if "%gitdate" != ""
 Source0:	qBittorrent-master-%{gitdate}.zip
 Release:	0
-Patch0:		qbittorrent-x86-build-fix.patch
 %else
 Source0:	http://downloads.sourceforge.net/project/qbittorrent/qbittorrent/qbittorrent-%{version}/qbittorrent-%{version}.tar.gz
-# Patch for fix build issue introduced in qbittorrent 4.1.4 on non x64bit arch like armv7 or i686. (penguin)
-# /src/base/utils/fs.cpp:346:10: error: case value evaluates to 4283649346, which cannot be narrowed to type '__fsword_t' (aka 'int') [-Wc++11-narrowing]
-Patch0:		qbittorrent-x86-build-fix.patch
 Release:	1
 %endif
 BuildRequires:	boost-devel
@@ -53,11 +49,9 @@ control the clinet remotely.
 %prep
 %if "%gitdate" != ""
 %setup -q -n qBittorrent-master
-%patch0 -p0
 %else
 %setup -q
 %endif
-%patch0 -p0
 
 %build
 %ifarch %{armx}
