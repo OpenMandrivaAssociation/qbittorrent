@@ -11,6 +11,7 @@ Url:		http://qbittorrent.sourceforge.net/
 %if "%gitdate" != ""
 Source0:	qBittorrent-master-%{gitdate}.zip
 Release:	0
+Patch0:		qbittorrent-x86-build-fix.patch
 %else
 Source0:	http://downloads.sourceforge.net/project/qbittorrent/qbittorrent/qbittorrent-%{version}/qbittorrent-%{version}.tar.gz
 # Patch for fix build issue introduced in qbittorrent 4.1.4 on non x64bit arch like armv7 or i686. (penguin)
