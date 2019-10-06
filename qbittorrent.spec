@@ -1,16 +1,16 @@
 %bcond_without nox
 #debuginfo-without-sources
 %define debug_package	%{nil}
-%define gitdate %{nil}
+%define gitdate 06.10.2019
 Name:		qbittorrent
-Version:	4.1.8
+Version:	4.2.0
 Summary:	A lightweight but featureful BitTorrent client
 Group:		Networking/File transfer
 License:	GPLv2+
 Url:		http://qbittorrent.sourceforge.net/
 %if "%gitdate" != ""
-Source0:	qbittorrent-%{gitdate}.tar.gz
-Release:	1
+Source0:	qbittorrent-master-%{gitdate}.zip
+Release:	0
 %else
 Source0:	http://downloads.sourceforge.net/project/qbittorrent/qbittorrent/qbittorrent-%{version}/qbittorrent-%{version}.tar.gz
 # Patch for fix build issue introduced in qbittorrent 4.1.4 on non x64bit arch like armv7 or i686. (penguin)
@@ -51,7 +51,7 @@ control the clinet remotely.
 
 %prep
 %if "%gitdate" != ""
-%setup -q -n %{name}-%{gitdate}
+%setup -q -n %{name}-master-%{gitdate}
 %else
 %setup -q
 %endif
