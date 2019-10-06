@@ -57,10 +57,10 @@ control the clinet remotely.
 %endif
 
 %build
-%ifarch %{armx}
+#ifarch %{armx}
 export CC=gcc
 export CXX=g++
-%endif
+#endif
 %setup_compile_flags
 
 sed -i -e 's,@QBT_CONF_EXTRA_CFLAGS@,@QBT_CONF_EXTRA_CFLAGS@ -std=gnu++1y,' conf.pri.in
