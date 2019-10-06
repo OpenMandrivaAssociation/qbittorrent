@@ -1,3 +1,5 @@
+%define _disable_lto 1
+
 %bcond_without nox
 #debuginfo-without-sources
 %define debug_package	%{nil}
