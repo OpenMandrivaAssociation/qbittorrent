@@ -9,7 +9,7 @@ Group:		Networking/File transfer
 License:	GPLv2+
 Url:		http://qbittorrent.sourceforge.net/
 %if "%gitdate" != ""
-Source0:	qbittorrent-master-%{gitdate}.zip
+Source0:	qBittorrent-master-%{gitdate}.zip
 Release:	0
 %else
 Source0:	http://downloads.sourceforge.net/project/qbittorrent/qbittorrent/qbittorrent-%{version}/qbittorrent-%{version}.tar.gz
@@ -51,7 +51,7 @@ control the clinet remotely.
 
 %prep
 %if "%gitdate" != ""
-%setup -q -n %{name}-master-%{gitdate}
+%setup -q -n qBittorent-master-%{gitdate}
 %else
 %setup -q
 %endif
