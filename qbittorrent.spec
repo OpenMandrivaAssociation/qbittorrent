@@ -52,7 +52,7 @@ control the clinet remotely.
 
 %prep
 %if "%gitdate" != ""
-%setup -q -n qBittorent-master-%{gitdate}
+%setup -q -n qBittorent-master
 %patch0 -p0
 %else
 %setup -q
