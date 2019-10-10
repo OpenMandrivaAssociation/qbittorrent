@@ -1,6 +1,3 @@
-%define _disable_lto 1
-%define _disable_ld_no_undefined 1
-
 %bcond_without nox
 #debuginfo-without-sources
 %define debug_package	%{nil}
@@ -13,7 +10,7 @@ License:	GPLv2+
 Url:		http://qbittorrent.sourceforge.net/
 %if "%gitdate" != ""
 Source0:	qBittorrent-master-%{gitdate}.zip
-Release:	0
+Release:	0.alpha.2
 %else
 Source0:	http://downloads.sourceforge.net/project/qbittorrent/qbittorrent/qbittorrent-%{version}/qbittorrent-%{version}.tar.gz
 Release:	1
