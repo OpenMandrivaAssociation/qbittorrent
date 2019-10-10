@@ -1,21 +1,18 @@
 %bcond_without nox
 #debuginfo-without-sources
 %define debug_package	%{nil}
-%define gitdate %{nil}
+%define gitdate 06.10.2019
 Name:		qbittorrent
-Version:	4.1.8
+Version:	4.2.0
 Summary:	A lightweight but featureful BitTorrent client
 Group:		Networking/File transfer
 License:	GPLv2+
 Url:		http://qbittorrent.sourceforge.net/
 %if "%gitdate" != ""
-Source0:	qbittorrent-%{gitdate}.tar.gz
-Release:	1
+Source0:	qBittorrent-master-%{gitdate}.zip
+Release:	0.alpha.2
 %else
 Source0:	http://downloads.sourceforge.net/project/qbittorrent/qbittorrent/qbittorrent-%{version}/qbittorrent-%{version}.tar.gz
-# Patch for fix build issue introduced in qbittorrent 4.1.4 on non x64bit arch like armv7 or i686. (penguin)
-# /src/base/utils/fs.cpp:346:10: error: case value evaluates to 4283649346, which cannot be narrowed to type '__fsword_t' (aka 'int') [-Wc++11-narrowing]
-Patch0:		qbittorrent-x86-build-fix.patch
 Release:	1
 %endif
 BuildRequires:	boost-devel
@@ -51,20 +48,20 @@ control the clinet remotely.
 
 %prep
 %if "%gitdate" != ""
-%setup -q -n %{name}-%{gitdate}
+%setup -q -n qBittorrent-master
 %else
 %setup -q
 %endif
-%patch0 -p0
 
 %build
-%ifarch %{armx}
-export CC=gcc
-export CXX=g++
-%endif
+#ifarch %{armx}
+#export CC=gcc
+#export CXX=g++
+#endif
+export CXXFLAGS="$CXXFLAGS -std=c++14"
 %setup_compile_flags
 
-sed -i -e 's,@QBT_CONF_EXTRA_CFLAGS@,@QBT_CONF_EXTRA_CFLAGS@ -std=gnu++1y,' conf.pri.in
+#sed -i -e 's,@QBT_CONF_EXTRA_CFLAGS@,@QBT_CONF_EXTRA_CFLAGS@ -std=gnu++1y,' conf.pri.in
 
 # headless aka nox
 %if %{with nox}
