@@ -1,7 +1,7 @@
 %bcond_without nox
 #debuginfo-without-sources
 %define debug_package	%{nil}
-%define gitdate 06.10.2019
+%define gitdate 30.10.2019
 Name:		qbittorrent
 Version:	4.2.0
 Summary:	A lightweight but featureful BitTorrent client
@@ -10,11 +10,12 @@ License:	GPLv2+
 Url:		http://qbittorrent.sourceforge.net/
 %if "%gitdate" != ""
 Source0:	qBittorrent-master-%{gitdate}.zip
-Release:	0.alpha.2
+Release:	0.beta.1
 %else
 Source0:	http://downloads.sourceforge.net/project/qbittorrent/qbittorrent/qbittorrent-%{version}/qbittorrent-%{version}.tar.gz
 Release:	1
 %endif
+Patch0:		qbittorrent-x86-build-fix.patch
 BuildRequires:	boost-devel
 BuildRequires:	qmake5
 BuildRequires:	qt5-linguist-tools
@@ -52,7 +53,7 @@ control the clinet remotely.
 %else
 %setup -q
 %endif
-
+%autopatch -p0
 %build
 #ifarch %{armx}
 #export CC=gcc
