@@ -10,7 +10,7 @@ License:	GPLv2+
 Url:		http://qbittorrent.sourceforge.net/
 %if "%gitdate" != ""
 Source0:	qBittorrent-master-%{gitdate}.zip
-Release:	0.beta.3
+Release:	0.beta.1
 %else
 Source0:	http://downloads.sourceforge.net/project/qbittorrent/qbittorrent/qbittorrent-%{version}/qbittorrent-%{version}.tar.gz
 Release:	1
