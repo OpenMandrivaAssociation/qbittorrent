@@ -1,8 +1,8 @@
 Index: src/base/utils/fs.cpp
 ===================================================================
 --- src/base/utils/fs.cpp
-+++ src/base/utils/fs.cpp	2018-11-26 21:10:41.023478550 +0100
-@@ -342,7 +342,7 @@
++++ src/base/utils/fs.cpp	2019-10-30 16:26:03.111310567 +0100
+@@ -348,7 +348,7 @@
      // Magic number references:
      // 1. /usr/include/linux/magic.h
      // 2. https://github.com/coreutils/coreutils/blob/master/src/stat.c
