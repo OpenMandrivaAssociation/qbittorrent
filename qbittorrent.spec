@@ -15,6 +15,7 @@ Release:	0.beta.3
 Source0:	http://downloads.sourceforge.net/project/qbittorrent/qbittorrent/qbittorrent-%{version}/qbittorrent-%{version}.tar.gz
 Release:	1
 %endif
+Patch0:		qbittorrent-x86-build-fix.patch
 BuildRequires:	boost-devel
 BuildRequires:	qmake5
 BuildRequires:	qt5-linguist-tools
@@ -52,7 +53,7 @@ control the clinet remotely.
 %else
 %setup -q
 %endif
-
+%autopatch -p0
 %build
 #ifarch %{armx}
 #export CC=gcc
