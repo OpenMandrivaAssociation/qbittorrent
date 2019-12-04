@@ -12,7 +12,7 @@ Url:		http://qbittorrent.sourceforge.net/
 Source0:	qBittorrent-master-%{gitdate}.zip
 Release:	0.beta.1
 %else
-Source0:	http://downloads.sourceforge.net/project/qbittorrent/qbittorrent/qbittorrent-%{version}/qbittorrent-%{version}.tar.gz
+Source0:	http://downloads.sourceforge.net/project/qbittorrent/qbittorrent/qbittorrent-%{version}/qbittorrent-%{version}.tar.xz
 Release:	1
 %endif
 # Patch for fix build issue introduced in qbittorrent 4.1.4 on non x64bit arch like armv7 or i686. (penguin)
