@@ -1,7 +1,7 @@
 %bcond_without nox
 #debuginfo-without-sources
 %define debug_package	%{nil}
-%define gitdate 30.10.2019
+%define gitdate %{nil}
 Name:		qbittorrent
 Version:	4.2.0
 Summary:	A lightweight but featureful BitTorrent client
@@ -12,13 +12,13 @@ Url:		http://qbittorrent.sourceforge.net/
 Source0:	qBittorrent-master-%{gitdate}.zip
 Release:	0.beta.1
 %else
-Source0:	http://downloads.sourceforge.net/project/qbittorrent/qbittorrent/qbittorrent-%{version}/qbittorrent-%{version}.tar.gz
+Source0:	http://downloads.sourceforge.net/project/qbittorrent/qbittorrent/qbittorrent-%{version}/qbittorrent-%{version}.tar.xz
 Release:	1
 %endif
 # Patch for fix build issue introduced in qbittorrent 4.1.4 on non x64bit arch like armv7 or i686. (penguin)
 # /src/base/utils/fs.cpp:346:10: error: case value evaluates to 4283649346, 
 # which cannot be narrowed to type '__fsword_t' (aka 'int') [-Wc++11-narrowing]
-Patch0:		qbittorrent-x86-build-fix.patch
+#Patch0:		qbittorrent-x86-build-fix.patch
 BuildRequires:	boost-devel
 BuildRequires:	qmake5
 BuildRequires:	qt5-linguist-tools
