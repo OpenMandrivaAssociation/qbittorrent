@@ -3,7 +3,7 @@
 %define debug_package	%{nil}
 %define gitdate %{nil}
 Name:		qbittorrent
-Version:	4.2.5
+Version:	4.3.0.1
 Summary:	A lightweight but featureful BitTorrent client
 Group:		Networking/File transfer
 License:	GPLv2+
@@ -22,7 +22,7 @@ Release:	1
 BuildRequires:	boost-devel
 BuildRequires:	qmake5
 BuildRequires:	qt5-linguist-tools
-BuildRequires:	pkgconfig(libtorrent-rasterbar)
+BuildRequires:	pkgconfig(libtorrent-rasterbar) >= 2.0.0
 BuildRequires:	pkgconfig(Qt5Concurrent)
 BuildRequires:	pkgconfig(Qt5Core)
 BuildRequires:	pkgconfig(Qt5DBus)
