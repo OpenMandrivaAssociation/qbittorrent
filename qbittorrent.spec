@@ -62,8 +62,8 @@ control the clinet remotely.
 %autopatch -p0
 %build
 #ifarch %{armx}
-export CC=gcc
-export CXX=g++
+#export CC=gcc
+#export CXX=g++
 #endif
 export CXXFLAGS="$CXXFLAGS -std=c++14"
 %setup_compile_flags
