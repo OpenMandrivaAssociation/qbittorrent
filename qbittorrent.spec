@@ -65,7 +65,7 @@ control the clinet remotely.
 #export CC=gcc
 #export CXX=g++
 #endif
-export CXXFLAGS="$CXXFLAGS -std=c++14"
+export CXXFLAGS="$CXXFLAGS -std=c++17"
 %setup_compile_flags
 
 #sed -i -e 's,@QBT_CONF_EXTRA_CFLAGS@,@QBT_CONF_EXTRA_CFLAGS@ -std=gnu++1y,' conf.pri.in
