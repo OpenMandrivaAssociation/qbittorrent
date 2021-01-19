@@ -6,7 +6,7 @@
 %define debug_package	%{nil}
 %define gitdate %{nil}
 Name:		qbittorrent
-Version:	4.3.2
+Version:	4.3.3
 Summary:	A lightweight but featureful BitTorrent client
 Group:		Networking/File transfer
 License:	GPLv2+
@@ -65,7 +65,7 @@ control the clinet remotely.
 #export CC=gcc
 #export CXX=g++
 #endif
-export CXXFLAGS="$CXXFLAGS -std=c++14"
+export CXXFLAGS="$CXXFLAGS -std=c++17"
 %setup_compile_flags
 
 #sed -i -e 's,@QBT_CONF_EXTRA_CFLAGS@,@QBT_CONF_EXTRA_CFLAGS@ -std=gnu++1y,' conf.pri.in
