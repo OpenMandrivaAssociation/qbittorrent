@@ -43,7 +43,7 @@ Requires:	geoip
 
 %description
 A lightweight but feature-full BitTorrent client that aims to be very easy 
-to use. It is multi-platform and provides a Qt4 graphical interface.
+to use. It is multi-platform and provides a Qt5 graphical interface.
 
 %package -n %{name}-nox
 Summary:	A Headless Bittorrent Client
