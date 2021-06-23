@@ -1,7 +1,6 @@
 %bcond_without nox
-#debuginfo-without-sources
-%define debug_package	%{nil}
 %define gitdate %{nil}
+
 Name:		qbittorrent
 Version:	4.3.5
 Summary:	A lightweight but featureful BitTorrent client
@@ -13,7 +12,7 @@ Source0:	qBittorrent-master-%{gitdate}.zip
 Release:	0.beta.1
 %else
 Source0:	http://downloads.sourceforge.net/project/qbittorrent/qbittorrent/qbittorrent-%{version}/qbittorrent-%{version}.tar.xz
-Release:	1
+Release:	2
 %endif
 # Patch for fix build issue introduced in qbittorrent 4.1.4 on non x64bit arch like armv7 or i686. (penguin)
 # /src/base/utils/fs.cpp:346:10: error: case value evaluates to 4283649346, 
@@ -34,7 +33,12 @@ BuildRequires:	pkgconfig(Qt5Xml)
 BuildRequires:	pkgconfig(gl)
 BuildRequires:	pkgconfig(zlib)
 BuildRequires:	pkgconfig(openssl)
-BuildRequires:	cmake ninja
+BuildRequires:	cmake
+BuildRequires:	ninja
+%if %{with nox}
+BuildRequires:	systemd-rpm-macros
+BuildRequires:	pkgconfig(libsystemd)
+%endif
 #BuildRequires:	qtchooser
 Requires:	python
 Requires:	geoip
@@ -58,7 +62,7 @@ control the clinet remotely.
 %autosetup -p0
 %endif
 %if %{with nox}
-CMAKE_BUILD_DIR=build-nox %cmake -G Ninja -DGUI:BOOL=OFF -DDBUS:BOOL=ON
+CMAKE_BUILD_DIR=build-nox %cmake -G Ninja -DGUI:BOOL=OFF -DDBUS:BOOL=ON -DSYSTEMD=ON
 cd ..
 %endif
 
@@ -95,5 +99,6 @@ CMAKE_BUILD_DIR=build-gui %cmake -G Ninja -DGUI:BOOL=ON -DDBUS:BOOL=ON
 %if %{with nox}
 %files -n  %{name}-nox
 %{_bindir}/%{name}-nox
+%{_unitdir}/*.service
 %{_mandir}/man1/%{name}-nox.1*
 %endif
