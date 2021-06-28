@@ -2,7 +2,7 @@
 %define gitdate %{nil}
 
 Name:		qbittorrent
-Version:	4.3.5
+Version:	4.3.6
 Summary:	A lightweight but featureful BitTorrent client
 Group:		Networking/File transfer
 License:	GPLv2+
@@ -12,7 +12,7 @@ Source0:	qBittorrent-master-%{gitdate}.zip
 Release:	0.beta.1
 %else
 Source0:	http://downloads.sourceforge.net/project/qbittorrent/qbittorrent/qbittorrent-%{version}/qbittorrent-%{version}.tar.xz
-Release:	2
+Release:	1
 %endif
 # Patch for fix build issue introduced in qbittorrent 4.1.4 on non x64bit arch like armv7 or i686. (penguin)
 # /src/base/utils/fs.cpp:346:10: error: case value evaluates to 4283649346, 
