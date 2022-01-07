@@ -94,6 +94,7 @@ CMAKE_BUILD_DIR=build-gui %cmake -G Ninja -DGUI:BOOL=ON -DDBUS:BOOL=ON
 %{_iconsdir}/hicolor/*/status/%{name}-tray.png
 %{_iconsdir}/hicolor/*/status/%{name}-tray*.svg
 %{_iconsdir}/hicolor/*/apps/%{name}.png
+%{_iconsdir}/hicolor/scalable/apps/qbittorrent.svg
 %{_datadir}/metainfo/org.%{name}.qBittorrent.appdata.xml
 %{_mandir}/man1/%{name}.1*
 
