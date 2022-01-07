@@ -12,7 +12,7 @@ Source0:	qBittorrent-master-%{gitdate}.zip
 Release:	0.beta.1
 %else
 Source0:	http://downloads.sourceforge.net/project/qbittorrent/qbittorrent/qbittorrent-%{version}/qbittorrent-%{version}.tar.xz
-Release:	1
+Release:	2
 %endif
 # Patch for fix build issue introduced in qbittorrent 4.1.4 on non x64bit arch like armv7 or i686. (penguin)
 # /src/base/utils/fs.cpp:346:10: error: case value evaluates to 4283649346, 
@@ -31,6 +31,17 @@ BuildRequires:	pkgconfig(Qt5Svg)
 BuildRequires:	pkgconfig(Qt5Network)
 BuildRequires:	pkgconfig(Qt5Widgets)
 BuildRequires:	pkgconfig(Qt5Xml)
+#test
+BuildRequires:	cmake(Qt6Concurrent)
+BuildRequires:	cmake(Qt6Core)
+BuildRequires:	cmake(Qt6DBus)
+BuildRequires:	cmake(Qt6Gui)
+BuildRequires:  cmake(Qt6Sql)
+BuildRequires:	cmake(Qt6Svg)
+BuildRequires:	cmake(Qt6Network)
+BuildRequires:	cmake(Qt6Widgets)
+BuildRequires:	cmake(Qt6Xml)
+
 BuildRequires:	pkgconfig(gl)
 BuildRequires:	pkgconfig(zlib)
 BuildRequires:	pkgconfig(openssl)
@@ -69,6 +80,10 @@ cd ..
 
 CMAKE_BUILD_DIR=build-gui %cmake -G Ninja -DGUI:BOOL=ON -DDBUS:BOOL=ON
 
+cd ..
+
+CMAKE_BUILD_DIR=build-gui6 %cmake -G Ninja -DGUI:BOOL=ON -DDBUS:BOOL=ON -DQT6=ON
+
 %build
 # Headless, AKA nox (No X[11])
 %if %{with nox}
@@ -78,6 +93,9 @@ CMAKE_BUILD_DIR=build-gui %cmake -G Ninja -DGUI:BOOL=ON -DDBUS:BOOL=ON
 # GUI
 %ninja_build -C build-gui
 
+# GUI QT6
+%ninja_build -C build-gui6
+
 %install
 # install headless part
 %if %{with nox}
@@ -86,6 +104,9 @@ CMAKE_BUILD_DIR=build-gui %cmake -G Ninja -DGUI:BOOL=ON -DDBUS:BOOL=ON
 
 # install gui
 %ninja_install -C build-gui
+
+# install gui QT6
+%ninja_install -C build-gui6
 
 %files
 %doc AUTHORS Changelog COPYING NEWS TODO
