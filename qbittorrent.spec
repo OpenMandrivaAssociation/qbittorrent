@@ -34,6 +34,7 @@ BuildRequires:	pkgconfig(Qt5Xml)
 #test
 BuildRequires:  qt6-cmake
 BuildRequires:  qmake-qt6
+BuildRequires:	qt6-qttools
 BuildRequires:	cmake(Qt6Concurrent)
 BuildRequires:	cmake(Qt6Core)
 BuildRequires:	cmake(Qt6DBus)
