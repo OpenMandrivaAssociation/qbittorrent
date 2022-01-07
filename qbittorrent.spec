@@ -2,7 +2,7 @@
 %define gitdate %{nil}
 
 Name:		qbittorrent
-Version:	4.3.9
+Version:	4.4.0
 Summary:	A lightweight but featureful BitTorrent client
 Group:		Networking/File transfer
 License:	GPLv2+
@@ -26,6 +26,7 @@ BuildRequires:	pkgconfig(Qt5Concurrent)
 BuildRequires:	pkgconfig(Qt5Core)
 BuildRequires:	pkgconfig(Qt5DBus)
 BuildRequires:	pkgconfig(Qt5Gui)
+BuildRequires:  pkgconfig(Qt5Sql)
 BuildRequires:	pkgconfig(Qt5Svg)
 BuildRequires:	pkgconfig(Qt5Network)
 BuildRequires:	pkgconfig(Qt5Widgets)
@@ -93,6 +94,7 @@ CMAKE_BUILD_DIR=build-gui %cmake -G Ninja -DGUI:BOOL=ON -DDBUS:BOOL=ON
 %{_iconsdir}/hicolor/*/status/%{name}-tray.png
 %{_iconsdir}/hicolor/*/status/%{name}-tray*.svg
 %{_iconsdir}/hicolor/*/apps/%{name}.png
+%{_iconsdir}/hicolor/scalable/apps/qbittorrent.svg
 %{_datadir}/metainfo/org.%{name}.qBittorrent.appdata.xml
 %{_mandir}/man1/%{name}.1*
 
