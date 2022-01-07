@@ -32,6 +32,8 @@ BuildRequires:	pkgconfig(Qt5Network)
 BuildRequires:	pkgconfig(Qt5Widgets)
 BuildRequires:	pkgconfig(Qt5Xml)
 #test
+BuildRequires:  qt6-cmake
+BuildRequires:  qmake-qt6
 BuildRequires:	cmake(Qt6Concurrent)
 BuildRequires:	cmake(Qt6Core)
 BuildRequires:	cmake(Qt6DBus)
