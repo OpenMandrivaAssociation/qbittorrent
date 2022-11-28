@@ -34,6 +34,7 @@ BuildRequires:	pkgconfig(Qt5Xml)
 BuildRequires:	pkgconfig(gl)
 BuildRequires:	pkgconfig(zlib)
 BuildRequires:	pkgconfig(openssl)
+BuildRequires:	pkgconfig(libunwind-llvm)
 BuildRequires:	cmake
 BuildRequires:	ninja
 %if %{with nox}
