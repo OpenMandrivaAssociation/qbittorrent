@@ -2,7 +2,7 @@
 %define gitdate %{nil}
 
 Name:		qbittorrent
-Version:	4.4.5
+Version:	4.5.0
 Summary:	A lightweight but featureful BitTorrent client
 Group:		Networking/File transfer
 License:	GPLv2+
@@ -88,7 +88,7 @@ CMAKE_BUILD_DIR=build-gui %cmake -G Ninja -DGUI:BOOL=ON -DDBUS:BOOL=ON
 %ninja_install -C build-gui
 
 %files
-%doc AUTHORS Changelog COPYING NEWS TODO
+%doc AUTHORS Changelog COPYING
 %{_bindir}/%{name}
 %{_datadir}/applications/org.%{name}.qBittorrent.desktop
 %{_iconsdir}/hicolor/*/status/%{name}-tray.png
