@@ -38,6 +38,7 @@ BuildRequires:	pkgconfig(libsystemd)
 BuildRequires:  qt6-cmake
 BuildRequires:  qmake-qt6
 BuildRequires:	qt6-qttools
+BuildRequires:  cmake(Qt6LinguistTools)
 BuildRequires:	cmake(Qt6Concurrent)
 BuildRequires:	cmake(Qt6Core)
 BuildRequires:	cmake(Qt6DBus)
@@ -47,6 +48,7 @@ BuildRequires:	cmake(Qt6Svg)
 BuildRequires:	cmake(Qt6Network)
 BuildRequires:	cmake(Qt6Widgets)
 BuildRequires:	cmake(Qt6Xml)
+BuildRequires:  qt6-qtbase-sql-firebird
 %endif
 Requires:	python
 Requires:	geoip
