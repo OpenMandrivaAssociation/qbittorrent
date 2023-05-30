@@ -74,6 +74,7 @@ CMAKE_BUILD_DIR=build-gui %cmake -G Ninja -DGUI:BOOL=ON -DDBUS:BOOL=ON
 cd ..
 %if %{with qt6}
 CMAKE_BUILD_DIR=build-gui6 %cmake -G Ninja -DGUI:BOOL=ON -DDBUS:BOOL=ON -DQT6=ON
+%endif
 
 %build
 # Headless, AKA nox (No X[11])
@@ -84,8 +85,10 @@ CMAKE_BUILD_DIR=build-gui6 %cmake -G Ninja -DGUI:BOOL=ON -DDBUS:BOOL=ON -DQT6=ON
 # GUI
 %ninja_build -C build-gui
 
+%if %{with qt6}
 # GUI6
 %ninja_build -C build-gui6
+%endif
 
 %install
 # install headless part
@@ -96,9 +99,10 @@ CMAKE_BUILD_DIR=build-gui6 %cmake -G Ninja -DGUI:BOOL=ON -DDBUS:BOOL=ON -DQT6=ON
 # install gui
 %ninja_install -C build-gui
 
+%if %{with qt6}
 #install gui6
 %ninja_insrall -C build-gui6
-
+%endif
 %files
 %doc AUTHORS Changelog COPYING
 %{_bindir}/%{name}
