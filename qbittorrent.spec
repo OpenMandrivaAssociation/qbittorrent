@@ -1,5 +1,5 @@
 %bcond_without nox
-%define gitdate %{nil}
+%bcond_without qt6
 
 Name:		qbittorrent
 Version:	4.5.3
@@ -7,17 +7,9 @@ Summary:	A lightweight but featureful BitTorrent client
 Group:		Networking/File transfer
 License:	GPLv2+
 Url:		http://qbittorrent.sourceforge.net/
-%if "%gitdate" != ""
-Source0:	qBittorrent-master-%{gitdate}.zip
-Release:	0.beta.1
-%else
 Source0:	http://downloads.sourceforge.net/project/qbittorrent/qbittorrent/qbittorrent-%{version}/qbittorrent-%{version}.tar.xz
-Release:	2
-%endif
-# Patch for fix build issue introduced in qbittorrent 4.1.4 on non x64bit arch like armv7 or i686. (penguin)
-# /src/base/utils/fs.cpp:346:10: error: case value evaluates to 4283649346, 
-# which cannot be narrowed to type '__fsword_t' (aka 'int') [-Wc++11-narrowing]
-#Patch0:		qbittorrent-x86-build-fix.patch
+Release:	1
+
 BuildRequires:	boost-devel
 BuildRequires:	qmake5
 BuildRequires:	qt5-linguist-tools
@@ -42,6 +34,20 @@ BuildRequires:	systemd-rpm-macros
 BuildRequires:	pkgconfig(libsystemd)
 %endif
 #BuildRequires:	qtchooser
+%if %{with qt6}
+BuildRequires:  qt6-cmake
+BuildRequires:  qmake-qt6
+BuildRequires:	qt6-qttools
+BuildRequires:	cmake(Qt6Concurrent)
+BuildRequires:	cmake(Qt6Core)
+BuildRequires:	cmake(Qt6DBus)
+BuildRequires:	cmake(Qt6Gui)
+BuildRequires:  cmake(Qt6Sql)
+BuildRequires:	cmake(Qt6Svg)
+BuildRequires:	cmake(Qt6Network)
+BuildRequires:	cmake(Qt6Widgets)
+BuildRequires:	cmake(Qt6Xml)
+%endif
 Requires:	python
 Requires:	geoip
 
@@ -58,17 +64,16 @@ A Headless Bittorrent Client with a feature rich Web UI allowing users to
 control the clinet remotely.
 
 %prep
-%if "%gitdate" != ""
-%autosetup -p0 -n qBittorrent-master
-%else
-%autosetup -p0
-%endif
+%autosetup -p1
 %if %{with nox}
 CMAKE_BUILD_DIR=build-nox %cmake -G Ninja -DGUI:BOOL=OFF -DDBUS:BOOL=ON -DSYSTEMD=ON
 cd ..
 %endif
 
 CMAKE_BUILD_DIR=build-gui %cmake -G Ninja -DGUI:BOOL=ON -DDBUS:BOOL=ON
+cd ..
+%if %{with qt6}
+CMAKE_BUILD_DIR=build-gui6 %cmake -G Ninja -DGUI:BOOL=ON -DDBUS:BOOL=ON -DQT6=ON
 
 %build
 # Headless, AKA nox (No X[11])
@@ -79,6 +84,9 @@ CMAKE_BUILD_DIR=build-gui %cmake -G Ninja -DGUI:BOOL=ON -DDBUS:BOOL=ON
 # GUI
 %ninja_build -C build-gui
 
+# GUI6
+%ninja_build -C build-gui6
+
 %install
 # install headless part
 %if %{with nox}
@@ -87,6 +95,9 @@ CMAKE_BUILD_DIR=build-gui %cmake -G Ninja -DGUI:BOOL=ON -DDBUS:BOOL=ON
 
 # install gui
 %ninja_install -C build-gui
+
+#install gui6
+%ninja_insrall -C build-gui6
 
 %files
 %doc AUTHORS Changelog COPYING
