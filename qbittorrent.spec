@@ -103,7 +103,7 @@ CMAKE_BUILD_DIR=build-gui6 %cmake -G Ninja -DGUI:BOOL=ON -DDBUS:BOOL=ON -DQT6=ON
 
 %if %{with qt6}
 #install gui6
-%ninja_insrall -C build-gui6
+%ninja_install -C build-gui6
 %endif
 %files
 %doc AUTHORS Changelog COPYING
