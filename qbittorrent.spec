@@ -2,7 +2,7 @@
 %define gitdate %{nil}
 
 Name:		qbittorrent
-Version:	4.5.3
+Version:	4.5.4
 Summary:	A lightweight but featureful BitTorrent client
 Group:		Networking/File transfer
 License:	GPLv2+
