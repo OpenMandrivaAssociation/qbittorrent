@@ -22,6 +22,7 @@ BuildRequires:	boost-devel
 BuildRequires:	qmake-qt6
 BuildRequires:	qt6-qttools-linguist-tools
 BuildRequires:	pkgconfig(libtorrent-rasterbar) >= 2.0.0
+BuildRequires:	cmake(Qt6)
 BuildRequires:	pkgconfig(Qt6Concurrent)
 BuildRequires:	pkgconfig(Qt6Core)
 BuildRequires:	pkgconfig(Qt6DBus)
