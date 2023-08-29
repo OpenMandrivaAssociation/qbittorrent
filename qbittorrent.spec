@@ -1,19 +1,19 @@
 %bcond_without nox
 %define gitdate %{nil}
+%define beta rc2
 
 Name:		qbittorrent
-Version:	4.5.4
+Version:	4.6.0
 Summary:	A lightweight but featureful BitTorrent client
 Group:		Networking/File transfer
 License:	GPLv2+
 Url:		http://qbittorrent.sourceforge.net/
-%if "%gitdate" != ""
-Source0:	qBittorrent-master-%{gitdate}.zip
-Release:	0.beta.1
+%if 0%{?beta:1}
+Source0:	https://github.com/qbittorrent/qBittorrent/archive/refs/tags/release-%{version}%{?beta:%{beta}}.tar.gz
 %else
 Source0:	http://downloads.sourceforge.net/project/qbittorrent/qbittorrent/qbittorrent-%{version}/qbittorrent-%{version}.tar.xz
-Release:	3
 %endif
+Release:	%{?beta:0.%{beta}.}1
 # Patch for fix build issue introduced in qbittorrent 4.1.4 on non x64bit arch like armv7 or i686. (penguin)
 # /src/base/utils/fs.cpp:346:10: error: case value evaluates to 4283649346, 
 # which cannot be narrowed to type '__fsword_t' (aka 'int') [-Wc++11-narrowing]
@@ -59,8 +59,8 @@ A Headless Bittorrent Client with a feature rich Web UI allowing users to
 control the clinet remotely.
 
 %prep
-%if "%gitdate" != ""
-%autosetup -p0 -n qBittorrent-master
+%if 0%{?beta:1}
+%autosetup -p0 -n qBittorrent-release-%{version}%{?beta:%{beta}}
 %else
 %autosetup -p0
 %endif
