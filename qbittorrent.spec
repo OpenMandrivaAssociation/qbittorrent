@@ -1,6 +1,6 @@
 %bcond_without nox
 %define gitdate %{nil}
-%define beta rc2
+#define beta rc2
 
 Name:		qbittorrent
 Version:	4.6.0
