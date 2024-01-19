@@ -20,7 +20,6 @@ Release:	%{?beta:0.%{beta}.}1
 #Patch0:		qbittorrent-x86-build-fix.patch
 BuildRequires:	boost-devel
 BuildRequires:	qmake-qt6
-BuildRequires:	qt6-qttools-linguist-tools
 BuildRequires:	pkgconfig(libtorrent-rasterbar) >= 2.0.0
 BuildRequires:	cmake(Qt6)
 BuildRequires:	pkgconfig(Qt6Concurrent)
@@ -36,6 +35,14 @@ BuildRequires:	pkgconfig(gl)
 BuildRequires:	pkgconfig(zlib)
 BuildRequires:	pkgconfig(openssl)
 BuildRequires:	pkgconfig(libunwind-llvm)
+BuildRequires:  pkgconfig(xkbcommon-x11)
+BuildRequires:  pkgconfig(vulkan)
+BuildRequires:	qt6-qttools-linguist-tools
+BuildRequires:  qt6-qtbase-theme-gtk3
+BuildRequires:	qt6-qtbase-sql-postgresql
+BuildRequires:  qt6-qtbase-sql-odbc
+BuildRequires:  qt6-qtbase-sql-mariadb
+BuildRequires:  qt6-qtbase-sql-firebird
 BuildRequires:	cmake
 BuildRequires:	ninja
 %if %{with nox}
