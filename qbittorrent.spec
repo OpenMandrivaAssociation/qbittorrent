@@ -3,7 +3,7 @@
 #define beta rc2
 
 Name:		qbittorrent
-Version:	4.6.3
+Version:	4.6.4
 Summary:	A lightweight but featureful BitTorrent client
 Group:		Networking/File transfer
 License:	GPLv2+
@@ -11,7 +11,7 @@ Url:		http://qbittorrent.sourceforge.net/
 %if 0%{?beta:1}
 Source0:	https://github.com/qbittorrent/qBittorrent/archive/refs/tags/release-%{version}%{?beta:%{beta}}.tar.gz
 %else
-Source0:	http://downloads.sourceforge.net/project/qbittorrent/qbittorrent/qbittorrent-%{version}/qbittorrent-%{version}.tar.xz
+Source0:	https://downloads.sourceforge.net/project/qbittorrent/qbittorrent/qbittorrent-%{version}/qbittorrent-%{version}.tar.xz
 %endif
 Release:	%{?beta:0.%{beta}.}1
 # Patch for fix build issue introduced in qbittorrent 4.1.4 on non x64bit arch like armv7 or i686. (penguin)
