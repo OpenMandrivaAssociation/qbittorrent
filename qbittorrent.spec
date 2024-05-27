@@ -3,7 +3,7 @@
 #define beta rc2
 
 Name:		qbittorrent
-Version:	4.6.4
+Version:	4.6.5
 Summary:	A lightweight but featureful BitTorrent client
 Group:		Networking/File transfer
 License:	GPLv2+
@@ -13,7 +13,7 @@ Source0:	https://github.com/qbittorrent/qBittorrent/archive/refs/tags/release-%{
 %else
 Source0:	https://downloads.sourceforge.net/project/qbittorrent/qbittorrent/qbittorrent-%{version}/qbittorrent-%{version}.tar.xz
 %endif
-Release:	%{?beta:0.%{beta}.}1
+Release:	%{?beta:0.%{beta}.}2
 # Patch for fix build issue introduced in qbittorrent 4.1.4 on non x64bit arch like armv7 or i686. (penguin)
 # /src/base/utils/fs.cpp:346:10: error: case value evaluates to 4283649346, 
 # which cannot be narrowed to type '__fsword_t' (aka 'int') [-Wc++11-narrowing]
@@ -104,7 +104,7 @@ CMAKE_BUILD_DIR=build-gui %cmake -G Ninja -DGUI:BOOL=ON -DDBUS:BOOL=ON -DQT6:BOO
 %{_iconsdir}/hicolor/*/status/%{name}-tray*.svg
 %{_iconsdir}/hicolor/*/apps/%{name}.png
 %{_iconsdir}/hicolor/scalable/apps/qbittorrent.svg
-%{_datadir}/metainfo/org.%{name}.qBittorrent.appdata.xml
+%{_datadir}/metainfo/org.%{name}.qBittorrent.metainfo.xml
 %{_mandir}/man1/%{name}.1*
 
 %if %{with nox}
