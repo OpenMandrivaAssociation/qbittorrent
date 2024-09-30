@@ -112,4 +112,6 @@ CMAKE_BUILD_DIR=build-gui %cmake -G Ninja -DGUI:BOOL=ON -DDBUS:BOOL=ON -DQT6:BOO
 %{_bindir}/%{name}-nox
 %{_unitdir}/*.service
 %{_mandir}/man1/%{name}-nox.1*
+%{_mandir}/ru/man1/qbittorrent-nox.1.*
+%{_mandir}/ru/man1/qbittorrent.1.*
 %endif
