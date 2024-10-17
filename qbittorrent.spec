@@ -7,7 +7,7 @@ Version:	5.0.0
 Summary:	A lightweight but featureful BitTorrent client
 Group:		Networking/File transfer
 License:	GPLv2+
-Url:		http://qbittorrent.sourceforge.net/
+Url:		https://qbittorrent.sourceforge.net/
 %if 0%{?beta:1}
 Source0:	https://github.com/qbittorrent/qBittorrent/archive/refs/tags/release-%{version}%{?beta:%{beta}}.tar.gz
 %else
