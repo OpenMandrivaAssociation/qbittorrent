@@ -3,7 +3,7 @@
 #define beta rc2
 
 Name:		qbittorrent
-Version:	5.1.0
+Version:	5.1.1
 Summary:	A lightweight but featureful BitTorrent client
 Group:		Networking/File transfer
 License:	GPLv2+
