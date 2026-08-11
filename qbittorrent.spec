@@ -14,10 +14,13 @@ Source0:	https://github.com/qbittorrent/qBittorrent/archive/refs/tags/release-%{
 Source0:	https://downloads.sourceforge.net/project/qbittorrent/qbittorrent/qbittorrent-%{version}/qbittorrent-%{version}.tar.xz
 %endif
 Release:	%{?beta:0.%{beta}.}2
+# Backport of e154c1a (PR #23953): build against libtorrent 2.1
+# storage_params.path is now string_view; mapped_files replaced by renamed_files
+Patch0:		qbittorrent-libtorrent-2.1.patch
 # Patch for fix build issue introduced in qbittorrent 4.1.4 on non x64bit arch like armv7 or i686. (penguin)
 # /src/base/utils/fs.cpp:346:10: error: case value evaluates to 4283649346, 
 # which cannot be narrowed to type '__fsword_t' (aka 'int') [-Wc++11-narrowing]
-#Patch0:		qbittorrent-x86-build-fix.patch
+#Patch1:		qbittorrent-x86-build-fix.patch
 BuildRequires:		cmake
 BuildRequires:		ninja
 BuildRequires:		qmake-qt6
@@ -92,9 +95,9 @@ control the clinet remotely.
 
 %prep
 %if 0%{?beta:1}
-%autosetup -p0 -n qBittorrent-release-%{version}%{?beta:%{beta}}
+%autosetup -p1 -n qBittorrent-release-%{version}%{?beta:%{beta}}
 %else
-%autosetup -p0
+%autosetup -p1
 %endif
 
 %if %{with nox}
