@@ -4,7 +4,7 @@
 
 Summary:		A lightweight but featureful BitTorrent client
 Name:		qbittorrent
-Version:		5.3.0
+Version:		5.3.1
 License:		GPLv2+
 Group:	Networking/File transfer
 Url:		https://qbittorrent.sourceforge.net
